@@ -16,7 +16,7 @@ Coming Soon!
 Currently only two.
 
 - Combines Meshes, either all or by selected. Currently only basic blender join.
-  - Will attempt to fix UV Cords when joining
+  - Will attempt to fix UV Cords when joining.
   - Will apply all transforms when joiing.
 - Combine Materials, combines similar materials and clean material slots not in use.
 
