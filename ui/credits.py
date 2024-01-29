@@ -1,8 +1,9 @@
 import bpy
+from core.translations import t
 
 class CreditsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_RINA_Credits'
-    bl_label = "Credits"
+    bl_label = t('CreditsSubMenu.label')
 
     def draw(self, context):
         scene = context.scene
@@ -18,7 +19,7 @@ class CreditsSubMenu(bpy.types.Menu):
         sub = col.column(align=True)
         sub.scale_y = 0.75
 
-        sub.label(text="Rina's Blender Tools Credits!")
+        sub.label(text=t("CreditsSubMenu.CreditsTitle")) 
         
         col.separator()
         col.separator()
@@ -27,12 +28,12 @@ class CreditsSubMenu(bpy.types.Menu):
         row = split.row(align=True)
         sub = col.column(align=True)
         sub.scale_y = 0.75
-        sub.label(text="Made by Yusarina for the VRChat")
-        sub.label(text="and blender community")  
+        sub.label(text=t("CreditsSubMenu.ForTheCommunity1")) 
+        sub.label(text=t("CreditsSubMenu.ForTheCommunity2"))  
 
         col.separator()
 
         split = box.split() # Split to align
         row = split.row()
         row.scale_y = 1.1
-        row.operator("wm.url_open", text="Yusarina's Website", icon='INFO').url = "https://yusarina.xyz"
+        row.operator("wm.url_open", text=t('CreditsSubMenu.YusarinaWebsite'), icon='INFO').url = "https://yusarina.xyz"
