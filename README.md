@@ -10,31 +10,25 @@ Rina's Blender Tools is an set of tools to help shorten steps needed to optimize
 
 ### Blender version support policies.
 
-Coming Soon!
+Find the versions of blender we support [here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Blender-Version-Support-Policies)
 
 ### Features.
-Currently only two.
 
-- Combines Meshes, either all or by selected. Currently only basic blender join.
-  - Will attempt to fix UV Cords when joining.
-  - Will apply all transforms when joiing.
-- Combine Materials, combines similar materials and clean material slots not in use.
+Please [clcik here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Features) to see what this plugin has to offer. 
 
 ### Requirments:
 
-- Blender 4.0 or above (run as administrator is recommended).
-  - Anything older then 4.0 will not work, this is built with 4.0+ in mind.
-- NOTE TO WINDOWS STORE USERS, STOP USING THE WINDOWS STORE VERSION YOU WILL HAVE ISSUES, PLEASE EITHER USE THE STEAM VERSION OR THE ONE FROM THE OFFICIAL BLENDER WEBSITE.
+Please [clcik here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Requirements) to see the requirments.
 
 ### Installation:
 
-Coming soon!
+[Click here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/How-to-install) to find the instructions on how to install.
 
 ### Help:
 
-Coming soon!
+Need some help, [click here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki) to find the manual which hopefully helps you (Coming soon).
 
 ### Feedback:
 
-Open an issue on this github to give feedback!
+Open an [issue](https://github.com/Yusarina/Rina-s-Blender-Tools/issues) on this github to give feedback!
 
