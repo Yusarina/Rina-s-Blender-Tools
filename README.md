@@ -15,7 +15,9 @@ Coming Soon!
 ### Features.
 Currently only two.
 
-- Combines Meshes, either all or by selected. Currently only basic blender join, however in the future there will be addition checks.
+- Combines Meshes, either all or by selected. Currently only basic blender join.
+  - Will attempt to fix UV Cords when joining.
+  - Will apply all transforms when joiing.
 - Combine Materials, combines similar materials and clean material slots not in use.
 
 ### Requirments:
