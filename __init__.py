@@ -14,6 +14,7 @@ import bpy
 import sys
 import os
 import importlib
+import addon_utils
 
 # Check if Blender version is supported
 if bpy.app.version < (4, 0, 0):
@@ -48,12 +49,8 @@ importlib.reload(core.translations)
 
 def update_language(self, context):
     core.translations.set_language(context.scene.plugin_language)
-
+    
 def register():
-    bpy.utils.register_class(functions.combine_materials.CombineMaterials)
-    bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
-    bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
-    bpy.utils.register_class(functions.separate_meshes.SeparateByMesh)
     bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
@@ -63,6 +60,10 @@ def register():
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
+    bpy.utils.register_class(functions.combine_materials.CombineMaterials)
+    bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
+    bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
+    bpy.utils.register_class(functions.separate_meshes.SeparateByMesh)
     core.translations.load_translations()
 
     #Define a list of supported languages

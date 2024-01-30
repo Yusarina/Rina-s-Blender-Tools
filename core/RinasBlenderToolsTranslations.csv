@@ -9,9 +9,41 @@ RinasBlenderToolsPanel.WikiLabel1,"Thank you for using Rina's","いつもリナ�
 RinasBlenderToolsPanel.WikiLabel2,"blender tools, if you need help","Blender ツール (ヘルプが必要な場合)","도움이 필요한 경우 블렌더 도구"
 RinasBlenderToolsPanel.WikiLabel3,help please visit the wiki below!,以下の Wiki を参照してください。,도와주세요 아래 위키를 방문해주세요!
 RinasBlenderToolsPanel.OpenWiki,Wiki,ウィキ,위키
-RinasBlenderToolsPanel.QuickAccess,Quick Access,迅速なアクセス,빠른 접근
+RinasBlenderToolsPanel.QuickAccess,Quick Access,クイックアクセス,빠른 액세스
 RinasBlenderToolsPanel.Optimization,Optimization,最適化,최적화
 RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧
 RinasBlenderToolsPanel.Settings,Settings,設定,설정
 SettingsSubMenu.label,Settings,設定,설정
 SettingsSubMenu.LanguageLabel,Language,言語,언어
+OptimizationSubMenu.label,Optimization,最適化,최적화
+QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
+CombineMaterials.label,Combine Materials,マテリアルを結合,메테리얼을 결합
+CombineMaterials.description,"Combines similar materials into one,
+ your avtar should look similar after this operations, 
+ if you have issues please let us know","類似したマテリアルを 1 つに結合します。
+ この操作後のアバターは同様に見えるはずです。
+ 問題がある場合はお知らせください。","유사한 자료를 하나로 결합하면 이 
+ 작업 후에 아바타가 비슷하게 보일 것입니다. 
+ 문제가 있는 경우 알려주십시오."
+JoinAllMeshes.label,Join All Meshes,すべてのメッシュを結合,모든 메시를 결합
+JoinAllMeshes.description,"Joins all meshes into one it will also do the following:
+
+- Will attempt to fix UV Cords when joining.
+- Will apply all transforms when joiing.","すべてのメッシュを 1 つに結合し、次のことも実行します。
+
+- 参加時に UV コードを修正しようとします。
+- 参加時にすべての変換を適用します。","모든 메시를 하나로 결합하면 다음 작업도 수행됩니다.
+
+- 가입 시 UV 코드 수정을 시도합니다.
+- 합류 시 모든 변환이 적용됩니다."
+JoinSelectedMeshes.label,Join Selected Meshes,選択したメッシュを結合,선택한 메시를 결합
+JoinSelectedMeshes.description,"Joins selected meshes into one it will also do the following:
+
+- Will attempt to fix UV Cords when joining.
+- Will apply all transforms when joiing.","選択したメッシュを 1 つに結合します。また、次のことも行います。
+
+- 参加時に UV コードを修正しようとします。
+- 参加時にすべての変換を適用します。",선택한 메시를 하나로 결합하면 다음 작업도 수행됩니다.
+
+- 가입 시 UV 코드 수정을 시도합니다.
+- 합류 시 모든 변환이 적용됩니다."
