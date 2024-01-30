@@ -1,8 +1,9 @@
 import bpy
+from core.translations import t
 
 class QuickAccessSubMenu(bpy.types.Menu):
-    bl_idname = 'VIEW3D_RINA_QuickAccess'
-    bl_label = "Quick Access"
+    bl_idname = 'VIEW3D_MT_RINA_QuickAccess'
+    bl_label = t('QuickAccessSubMenu.label')
     
     def draw(self, context):
         scene = context.scene
@@ -18,7 +19,7 @@ class QuickAccessSubMenu(bpy.types.Menu):
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.join_all_meshes")
-        row.operator("rinasplugin.combine_materials")
+        row.operator("rinasplugin.join_all_meshes", text=t("JoinAllMeshes.label"))
+        row.operator("rinasplugin.combine_materials", text=t("CombineMaterials.label"))
         col.separator()
         col.separator()

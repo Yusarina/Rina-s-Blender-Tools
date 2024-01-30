@@ -2,7 +2,7 @@ import bpy
 from core.translations import t, set_language
 
 class SettingsSubMenu(bpy.types.Menu):
-    bl_idname = 'VIEW3D_RINA_Settings'
+    bl_idname = 'VIEW3D_MT_RINA_Settings'
     bl_label = "SettingsSubMenu.label"
 
     def draw(self, context):

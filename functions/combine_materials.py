@@ -1,6 +1,7 @@
 import bpy
 import re
 from core.common import get_armature, get_meshes, clean_material_names
+from core.translations import t
 
 def materials_match(mat1, mat2):
     return mat1.diffuse_color == mat2.diffuse_color and mat1.roughness == mat2.roughness
@@ -13,7 +14,8 @@ def report_consolidated(self, num_combined):
     self.report({'INFO'}, f'{num_combined} materials combined')
 
 class CombineMaterials(bpy.types.Operator):
-    bl_label = "Combine Materials"
+    bl_label = t("")
+    bl_description = t("CombineMaterials.description")
     bl_idname = "rinasplugin.combine_materials"
     bl_options = {'REGISTER', 'UNDO'}
     

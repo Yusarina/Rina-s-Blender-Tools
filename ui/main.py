@@ -7,7 +7,7 @@ from core.translations import t
 
 class RinasBlenderToolsPanel(bpy.types.Panel):
     bl_label = t('RinasBlenderToolsPanel.label')
-    bl_idname = '3D_VIEW_RinasPluginPanel'
+    bl_idname = '3D_VIEW_PT_RinasPluginPanel'
     bl_category = "Rina's Tools"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
