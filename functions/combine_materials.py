@@ -18,6 +18,10 @@ class CombineMaterials(bpy.types.Operator):
     bl_label = t("CombineMaterials.label")
     bl_description = t("CombineMaterials.description")
     bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return get_armature(context) is not None
     
     def execute(self, context):
 

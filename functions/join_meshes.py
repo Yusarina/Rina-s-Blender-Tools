@@ -1,12 +1,17 @@
 import bpy
 from core.common import fix_uv_coordinates
 from core.translations import t
+from core.common import get_armature
 
 class JoinAllMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_all_meshes"    
     bl_label = t("CombineMaterials.label")
     bl_description = t('JoinAllMeshes.description')
     bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return get_armature(context) is not None
     
     def execute(self, context):
         self.join_all_meshes(context)
@@ -56,6 +61,10 @@ class JoinSelectedMeshes(bpy.types.Operator):
     bl_label = t("CombineMaterials.label")
     bl_description = t("CombineMaterials.description")
     bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return get_armature(context) is not None
     
     def execute(self, context):
         self.join_selected_meshes(context)

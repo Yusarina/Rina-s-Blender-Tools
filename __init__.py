@@ -25,6 +25,8 @@ sys.path.append(file_dir)
 from bpy.props import EnumProperty
 
 import core.common
+import core.addonpreferences
+import core.translations
 import functions.combine_materials
 import functions.join_meshes
 import functions.separate_meshes
@@ -33,10 +35,10 @@ import ui.quick_access
 import ui.optimization
 import ui.credits
 import ui.settings
-import core.translations
-import core.addonpreferences
 
 importlib.reload(core.common)
+importlib.reload(core.addonpreferences)
+importlib.reload(core.translations)
 importlib.reload(functions.combine_materials)
 importlib.reload(functions.join_meshes)
 importlib.reload(functions.separate_meshes)
@@ -45,8 +47,6 @@ importlib.reload(ui.quick_access)
 importlib.reload(ui.optimization)
 importlib.reload(ui.credits)
 importlib.reload(ui.settings)
-importlib.reload(core.translations)
-importlib.reload(core.addonpreferences)
     
 def register():
     core.translations.load_translations()
@@ -56,16 +56,17 @@ def register():
     bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.register_class(functions.separate_meshes.SeparateByMesh)
+    bpy.utils.register_class(core.common.RemoveDoubles)
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
     bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
     bpy.utils.register_class(ui.settings.SettingsSubMenu)
     bpy.utils.register_class(ui.credits.CreditsSubMenu)
-    bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
+    bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
     
     bpy.types.Scene.plugin_language = bpy.props.EnumProperty(
         name="Plugin Language",
@@ -80,6 +81,7 @@ def unregister():
     bpy.utils.unregister_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.unregister_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.unregister_class(functions.separate_meshes.SeparateByMesh)
+    bpy.utils.unregister_class(core.common.RemoveDoubles)
     bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)

@@ -19,8 +19,8 @@ SettingsSubMenu.LanguageLabel,Language,言語,언어
 OptimizationSubMenu.label,Optimization,最適化,최적화
 QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
 CombineMaterials.label,Combine Materials,マテリアルを結合,메테리얼을 결합
-CombineMaterials.description,"Combines similar materials into one,
- your avtar should look similar after this operations, 
+CombineMaterials.description,"Combines similar materials into one
+ your avtar should look similar after this operations 
  if you have issues please let us know","類似したマテリアルを 1 つに結合します。
  この操作後のアバターは同様に見えるはずです。
  問題がある場合はお知らせください。","유사한 자료를 하나로 결합하면 이 
@@ -48,3 +48,14 @@ JoinSelectedMeshes.description,"Joins selected meshes into one it will also do t
 
 - 가입 시 UV 코드 수정을 시도합니다.
 - 합류 시 모든 변환이 적용됩니다."
+RemoveDoubles.label,Remove Doubles,重複を削除,중복 제거
+RemoveDoubles.description,"Removes doubles from the all meshes however:
+
+- This is better then doing it manually 
+- however it will not remove doubles if the mesh has shape keys","ただし、すべてのメッシュから double を削除します。」
+
+- これは手動で行うよりも良いです
+- ただし、メッシュにシェイプ キーがある場合はダブルは削除されません。","그러나 모든 메시에서 double을 제거합니다.
+
+- 수동으로 하는 것보다 낫습니다.
+- 그러나 메쉬에 모양 키가 있는 경우 복식은 제거되지 않습니다."

@@ -26,6 +26,12 @@ class OptimizationSubMenu(bpy.types.Menu):
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
+        row.operator("rinasplugin.remove_doubles", text=t("RemoveDoubles.label"))
+        col.separator()
+        col.separator()
+        split = col.row(align=True)
+        row = split.row(align=True)
+        row.scale_y = 1.1
         row.operator("rinasplugin.combine_materials", text=t("CombineMaterials.label"))
         col.separator()
         col.separator()
