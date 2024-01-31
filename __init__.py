@@ -14,7 +14,6 @@ import bpy
 import sys
 import os
 import importlib
-import addon_utils
 
 # Check if Blender version is supported
 if bpy.app.version < (4, 0, 0):
@@ -35,6 +34,7 @@ import ui.optimization
 import ui.credits
 import ui.settings
 import core.translations
+import core.addonpreferences
 
 importlib.reload(core.common)
 importlib.reload(functions.combine_materials)
@@ -46,39 +46,34 @@ importlib.reload(ui.optimization)
 importlib.reload(ui.credits)
 importlib.reload(ui.settings)
 importlib.reload(core.translations)
-
-def update_language(self, context):
-    core.translations.set_language(context.scene.plugin_language)
+importlib.reload(core.addonpreferences)
     
 def register():
-    bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
-    bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
-    bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
-    bpy.utils.register_class(ui.credits.CreditsSubMenu)
-    bpy.utils.register_class(ui.settings.SettingsSubMenu)
-    bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
-    bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
-    bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
-    bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
+    core.translations.load_translations()
+    bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
+    bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.utils.register_class(functions.combine_materials.CombineMaterials)
     bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.register_class(functions.separate_meshes.SeparateByMesh)
-    core.translations.load_translations()
-
-    #Define a list of supported languages
-    language_items = [
-        ("en", "English", "English"),
-        ("ja", "Japanese", "Japanese"),
-        ("ko", "Korean", "Korean"),
-    ]
-
+    bpy.utils.register_class(core.addonpreferences.AddonPreferences)
+    bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
+    bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
+    bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
+    bpy.utils.register_class(ui.settings.SettingsSubMenu)
+    bpy.utils.register_class(ui.credits.CreditsSubMenu)
+    bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
+    bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
+    bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
+    bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
+    
     bpy.types.Scene.plugin_language = bpy.props.EnumProperty(
         name="Plugin Language",
-        items=language_items,
+        items=core.translations.language_items,
         default="en",
-        update=update_language
+        update=core.translations.update_language
     )
+    
 
 def unregister():
     bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)
@@ -89,13 +84,24 @@ def unregister():
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)
     bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
+    bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
+    bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)
     del bpy.types.Scene.show_credits
     del bpy.types.Scene.show_optimization
     del bpy.types.Scene.show_quick_access
     del bpy.types.Scene.show_settings
-    core.translations.load_translations()
-    bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
     del bpy.types.Scene.plugin_language
+    core.translations.load_translations()
+
+    # Check if the load_post handler is in the list before removing it
+    load_post_handler = core.addonpreferences.AddonPreferences.load_preferences
+    if load_post_handler in bpy.app.handlers.load_post:
+        bpy.app.handlers.load_post.remove(load_post_handler)
+
+    # Check if the save_post handler is in the list before removing it
+    save_post_handler = core.addonpreferences.AddonPreferences.save_preferences
+    if save_post_handler in bpy.app.handlers.save_post:
+        bpy.app.handlers.save_post.remove(save_post_handler)
 
 if __name__ == '__main__':
     register()

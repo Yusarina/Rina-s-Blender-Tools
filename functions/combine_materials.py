@@ -14,9 +14,9 @@ def report_consolidated(self, num_combined):
     self.report({'INFO'}, f'{num_combined} materials combined')
 
 class CombineMaterials(bpy.types.Operator):
-    bl_label = t("")
-    bl_description = t("CombineMaterials.description")
     bl_idname = "rinasplugin.combine_materials"
+    bl_label = t("CombineMaterials.label")
+    bl_description = t("CombineMaterials.description")
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):

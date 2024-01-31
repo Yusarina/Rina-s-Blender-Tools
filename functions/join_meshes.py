@@ -3,9 +3,9 @@ from core.common import fix_uv_coordinates
 from core.translations import t
 
 class JoinAllMeshes(bpy.types.Operator):
-    bl_label = t("")
+    bl_idname = "rinasplugin.join_all_meshes"    
+    bl_label = t("CombineMaterials.label")
     bl_description = t('JoinAllMeshes.description')
-    bl_idname = "rinasplugin.join_all_meshes"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -52,9 +52,9 @@ class JoinAllMeshes(bpy.types.Operator):
             self.report({'WARNING'}, "No mesh objects selected for joining")
 
 class JoinSelectedMeshes(bpy.types.Operator):
-    bl_label = ""
-    bl_description = t("JoinSelectedMeshes.desc")
     bl_idname = "rinasplugin.join_selected_meshes"
+    bl_label = t("CombineMaterials.label")
+    bl_description = t("CombineMaterials.description")
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
