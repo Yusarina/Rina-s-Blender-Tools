@@ -33,6 +33,7 @@ import functions.separate_meshes
 import ui.main
 import ui.quick_access
 import ui.optimization
+import ui.otheroptions
 import ui.credits
 import ui.settings
 
@@ -45,26 +46,30 @@ importlib.reload(functions.separate_meshes)
 importlib.reload(ui.main)
 importlib.reload(ui.quick_access)
 importlib.reload(ui.optimization)
+importlib.reload(ui.otheroptions)
 importlib.reload(ui.credits)
 importlib.reload(ui.settings)
     
 def register():
     core.translations.load_translations()
+    bpy.utils.register_class(core.common.RemoveDoubles)
+    bpy.utils.register_class(core.addonpreferences.AddonPreferences)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.utils.register_class(functions.combine_materials.CombineMaterials)
     bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
-    bpy.utils.register_class(functions.separate_meshes.SeparateByMesh)
-    bpy.utils.register_class(core.common.RemoveDoubles)
-    bpy.utils.register_class(core.addonpreferences.AddonPreferences)
+    bpy.utils.register_class(functions.separate_meshes.SeparateByMaterials)
+    bpy.utils.register_class(functions.separate_meshes.SeparateLooseParts)
     bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
+    bpy.utils.register_class(ui.otheroptions.OtherOptionsSubMenu)
     bpy.utils.register_class(ui.settings.SettingsSubMenu)
     bpy.utils.register_class(ui.credits.CreditsSubMenu)
-    bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
+    bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=True)
+    bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
     bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
     
@@ -80,11 +85,13 @@ def unregister():
     bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)
     bpy.utils.unregister_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.unregister_class(functions.join_meshes.JoinSelectedMeshes)
-    bpy.utils.unregister_class(functions.separate_meshes.SeparateByMesh)
+    bpy.utils.unregister_class(functions.separate_meshes.SeparateByMaterials)
+    bpy.utils.unregister_class(functions.separate_meshes.SeparateLooseParts)
     bpy.utils.unregister_class(core.common.RemoveDoubles)
     bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)
+    bpy.utils.unregister_class(ui.otheroptions.OtherOptionsSubMenu)
     bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
     bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
     bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)

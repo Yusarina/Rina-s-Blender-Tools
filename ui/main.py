@@ -1,6 +1,7 @@
 import bpy
 from ui.quick_access import QuickAccessSubMenu
 from ui.optimization import OptimizationSubMenu
+from ui.otheroptions import OtherOptionsSubMenu
 from ui.credits import CreditsSubMenu
 from ui.settings import SettingsSubMenu
 from core.translations import t
@@ -52,6 +53,13 @@ class RinasBlenderToolsPanel(bpy.types.Panel):
         if scene.show_optimization:
             # Call the submenu class
             OptimizationSubMenu.draw(self, context)
+
+        box = layout.box()
+        row = box.row()  
+        row.prop(scene, "show_other_options", text=t("RinasBlenderToolsPanel.OtherOptions"), icon="TRIA_DOWN" if scene.show_other_options else "TRIA_RIGHT", emboss=False)
+        if scene.show_other_options:
+            # Call the submenu class
+            OtherOptionsSubMenu.draw(self, context)
 
         box = layout.box()
         row = box.row()  
