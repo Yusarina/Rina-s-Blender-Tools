@@ -1,5 +1,4 @@
 import bpy
-import re
 import bmesh
 from core.translations import t
 
