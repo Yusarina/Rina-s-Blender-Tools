@@ -8,6 +8,8 @@ Rina's Blender Tools is an set of tools to help shorten steps needed to optimize
 - See my github: https://github.com/Yusarina
 - See all my social media sites here: https://yusarina.xyz
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R1SDNNP)
+
 ### Blender version support policies.
 
 Find the versions of blender we support [here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Blender-Version-Support-Policies)
