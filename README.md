@@ -4,7 +4,7 @@ Rina's Blender Tools is an set of tools to help shorten steps needed to optimize
 
 #### This will be an replacement to cats once it's more fleshed out, however at this minute of time, unless you only need the set features currently in I would recomend using the cats I currently maintain, see it [here](https://github.com/Yusarina/Cats-Blender-Plugin-Unofficial-).
 
-#### This is the Development version of the tool's this maybe more unstable, but it may have more features, if you want a stable version go [here](https://github.com/Yusarina/Rina-s-Blender-Tools/tree/blender-40-main)
+#### This is the Development version of the tool's this maybe more unstable, but it may have more features, if you want a stable version go [here](https://github.com/Yusarina/Rina-s-Blender-Tools/tree/blender-40-main).
 
 - See my gumroad: https://yusarina.gumroad.com
 - See my github: https://github.com/Yusarina
