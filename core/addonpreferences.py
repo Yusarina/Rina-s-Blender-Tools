@@ -31,6 +31,14 @@ class AddonPreferences(bpy.types.AddonPreferences):
             with open(filepath, 'w') as file:
                 json.dump({}, file)
 
+class MergeRatioMergeBones(bpy.types.PropertyGroup):
+    merge_ratio: bpy.props.FloatProperty(
+        name="Merge Ratio", 
+        min=0.1, 
+        max=1.0,
+        default=0.5
+    )
+
 # Load preferences when Blender starts
 addon_prefs_filepath = os.path.join(os.path.dirname(__file__), 'settings.json')  # Update the path to the core folder
 addon_prefs = bpy.context.preferences.addons.get(__package__)

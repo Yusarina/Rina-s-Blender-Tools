@@ -1,5 +1,6 @@
 import bpy
 from core.translations import t
+from functions.bones import MergeArmatureBones
 
 class OptimizationSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Optimization'
@@ -35,3 +36,21 @@ class OptimizationSubMenu(bpy.types.Menu):
         row.operator("rinasplugin.combine_materials", text=t("CombineMaterials.label"))
         col.separator()
         col.separator()
+
+        box = layout.box()
+        col = box.column(align=True)
+        split = col.row(align=True)
+        row = split.row(align=True)
+        row.scale_y = 1.5
+
+        col.separator()
+        col.separator()
+        split = col.row(align=True)
+        row = split.row(align=True)
+        # Get reference to operator 
+        op = row.operator("rinasplugin.merge_bones") 
+        row.prop(op, "bone_parents")   
+        col.separator()
+        split = col.row(align=True)
+        row = split.row(align=True)
+        row.prop(context.scene.rinas_props, "merge_ratio")
