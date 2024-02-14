@@ -27,6 +27,7 @@ from bpy.props import EnumProperty
 import core.common
 import core.addonpreferences
 import core.translations
+import functions.otheroptimizations
 import functions.combine_materials
 import functions.join_meshes
 import functions.separate_meshes
@@ -41,6 +42,7 @@ import ui.settings
 importlib.reload(core.common)
 importlib.reload(core.addonpreferences)
 importlib.reload(core.translations)
+importlib.reload(functions.otheroptimizations)
 importlib.reload(functions.combine_materials)
 importlib.reload(functions.join_meshes)
 importlib.reload(functions.separate_meshes)
@@ -54,11 +56,11 @@ importlib.reload(ui.settings)
     
 def register():
     core.translations.load_translations()
-    bpy.utils.register_class(core.common.RemoveDoubles)
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
     bpy.utils.register_class(core.addonpreferences.MergeRatioMergeBones)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
+    bpy.utils.register_class(functions.otheroptimizations.RemoveDoubles)
     bpy.utils.register_class(functions.combine_materials.CombineMaterials)
     bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
@@ -87,13 +89,13 @@ def register():
     
 
 def unregister():
+    bpy.utils.unregister_class(functions.otheroptimizations.RemoveDoubles)
     bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)
     bpy.utils.unregister_class(functions.join_meshes.JoinAllMeshes)
     bpy.utils.unregister_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.unregister_class(functions.separate_meshes.SeparateByMaterials)
     bpy.utils.unregister_class(functions.separate_meshes.SeparateLooseParts)
     bpy.utils.unregister_class(functions.bones.MergeArmatureBones)
-    bpy.utils.unregister_class(core.common.RemoveDoubles)
     bpy.utils.unregister_class(core.addonpreferences.MergeRatioMergeBones)
     bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
