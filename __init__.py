@@ -57,7 +57,6 @@ importlib.reload(ui.settings)
 def register():
     core.translations.load_translations()
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
-    bpy.utils.register_class(core.addonpreferences.MergeRatioMergeBones)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.utils.register_class(functions.otheroptimizations.RemoveDoubles)
@@ -66,14 +65,15 @@ def register():
     bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.register_class(functions.separate_meshes.SeparateByMaterials)
     bpy.utils.register_class(functions.separate_meshes.SeparateLooseParts)
-    bpy.utils.register_class(functions.bones.MergeArmatureBones)
+    bpy.utils.register_class(functions.bones.MergeBones)
     bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
     bpy.utils.register_class(ui.otheroptions.OtherOptionsSubMenu)
     bpy.utils.register_class(ui.settings.SettingsSubMenu)
     bpy.utils.register_class(ui.credits.CreditsSubMenu)
-    bpy.types.Scene.rinas_props = bpy.props.PointerProperty(type=core.addonpreferences.MergeRatioMergeBones)
+    bpy.types.Scene.merge_base_bone = bpy.props.StringProperty()
+    bpy.types.Scene.merge_ratio = bpy.props.FloatProperty(min=0.0, max=100.0, default=50.0)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=True)
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
@@ -95,8 +95,7 @@ def unregister():
     bpy.utils.unregister_class(functions.join_meshes.JoinSelectedMeshes)
     bpy.utils.unregister_class(functions.separate_meshes.SeparateByMaterials)
     bpy.utils.unregister_class(functions.separate_meshes.SeparateLooseParts)
-    bpy.utils.unregister_class(functions.bones.MergeArmatureBones)
-    bpy.utils.unregister_class(core.addonpreferences.MergeRatioMergeBones)
+    bpy.utils.unregister_class(functions.bones.MergeBones)
     bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)
@@ -104,12 +103,13 @@ def unregister():
     bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
     bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
     bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)
+    del bpy.types.Scene.merge_base_bone
+    del bpy.types.Scene.merge_ratio
     del bpy.types.Scene.show_credits
     del bpy.types.Scene.show_optimization
     del bpy.types.Scene.show_quick_access
     del bpy.types.Scene.show_settings
     del bpy.types.Scene.plugin_language
-    del bpy.types.Scene.rinas_props
     core.translations.load_translations()
 
     # Check if the load_post handler is in the list before removing it
