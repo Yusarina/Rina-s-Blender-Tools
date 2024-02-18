@@ -1,12 +1,21 @@
 import bpy
+import functions.bones
 from core.translations import t
 from core.addonpreferences import AddonPreferences
+from functions.bones import get_bone_items, MergeBones
+from bpy.props import StringProperty, EnumProperty
+
+class RinasPluginProps(bpy.types.PropertyGroup):
+    merge_base_bone: bpy.props.EnumProperty(items=get_bone_items)
 
 class OptimizationSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Optimization'
     bl_label = t('OptimizationSubMenu.label')
 
+    merge_base_bone: bpy.props.EnumProperty()
+
     def draw(self, context):
+        self.merge_base_bone = context.scene.rinas_plugin.merge_base_bone
         scene = context.scene
         layout = self.layout
         box = layout.box()
@@ -44,8 +53,10 @@ class OptimizationSubMenu(bpy.types.Menu):
         row.scale_y = 1.5
 
         col.separator()
-        col.separator()
-        layout.prop_search(context.scene, "merge_base_bone", bpy.context.active_object.data, "bones")  
+        col.separator()  
+        layout.prop(scene.rinas_plugin, "merge_base_bone")
+        self.merge_base_bone = context.scene.rinas_plugin.merge_base_bone
+        # print("Selected bone:", self.merge_base_bone)  # Add this line to check the selected bone
         layout.prop(context.scene, "merge_ratio")
         
-        layout.operator("rinasplugin.merge_bones")
+        layout.operator("rinasplugin.merge_bones_main")

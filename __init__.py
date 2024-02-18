@@ -72,7 +72,9 @@ def register():
     bpy.utils.register_class(ui.otheroptions.OtherOptionsSubMenu)
     bpy.utils.register_class(ui.settings.SettingsSubMenu)
     bpy.utils.register_class(ui.credits.CreditsSubMenu)
+    bpy.utils.register_class(ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_base_bone = bpy.props.StringProperty()
+    bpy.types.Scene.rinas_plugin = bpy.props.PointerProperty(type=ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_ratio = bpy.props.FloatProperty(min=0.0, max=100.0, default=50.0)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=True)
@@ -110,6 +112,8 @@ def unregister():
     del bpy.types.Scene.show_quick_access
     del bpy.types.Scene.show_settings
     del bpy.types.Scene.plugin_language
+    del bpy.types.Scene.rinas_plugin
+    bpy.utils.unregister_class(ui.optimization.RinasPluginProps)
     core.translations.load_translations()
 
     # Check if the load_post handler is in the list before removing it
