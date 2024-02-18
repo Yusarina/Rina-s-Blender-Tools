@@ -1,5 +1,4 @@
 import bpy
-from bpy.props import StringProperty, FloatProperty
 from core.common import get_armature
 
 class MergeBones(bpy.types.Operator):
@@ -22,15 +21,13 @@ class MergeBones(bpy.types.Operator):
         num_to_merge = int(len(base_children) * ratio)
         merge_bones = base_children[:num_to_merge]
         
-
         # Merge the bones
         for pose_bone in merge_bones:
             edit_bone = armature.data.edit_bones[pose_bone.name]
             armature.data.edit_bones.remove(edit_bone)
             pose_bone.parent = base_bone
-            
-        armature.data.edit_bones.remove(base_bone)
 
         bpy.ops.object.mode_set(mode='OBJECT')
         
         return {'FINISHED'}
+    
