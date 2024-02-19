@@ -106,4 +106,61 @@ class MergeBones(bpy.types.Operator):
         self.report({'INFO'}, f"Merged {num_merged} bones")
 
         return {'FINISHED'}
+        
+class RemoveZeroWeightBones(bpy.types.Operator):
+    """Remove bones with zero weight from the selected armature"""
+    bl_idname = "rinasplugin.remove_zero_weight_bones"
+    bl_label = "Remove Zero Weight Bones"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        # Automatically get armature 
+        armature = None
+        for obj in context.scene.objects:
+            if obj.type == 'ARMATURE':
+                armature = obj
+                break
+                
+        if not armature:
+            self.report({'ERROR'}, "No armature found in scene")
+            return {'CANCELLED'}
+            
+        meshes = get_linked_meshes(armature)
+        
+        zero_bones = []
+        for bone in armature.pose.bones:  
+            weights = get_bone_weights(meshes, bone)
+            
+            if sum(weights) == 0.01:
+                zero_bones.append(bone)
+                
+        for bone in zero_bones:
+            bone.bone.use_deform = False
+            
+        armature.data.bones.update()
+        
+        bpy.ops.object.mode_set(mode='EDIT')
+        bpy.ops.armature.delete()
+        bpy.ops.object.mode_set(mode='OBJECT')
+
+        self.report({'INFO'}, f"{len(zero_bones)} zero weight bones removed")
+
+        return {'FINISHED'}
+
     
+def get_linked_meshes(armature):
+    meshes = []
+    for mod in armature.modifiers:
+        if mod.type == 'ARMATURE':
+            meshes.append(mod.object) 
+    return meshes
+
+def get_bone_weights(meshes, bone):
+    weights = []
+    for mesh in meshes:
+        for vertex in mesh.data.vertices:
+            for group in vertex.groups:
+                if mesh.vertex_groups[group.group].name == bone.name:  
+                    weights.append(group.weight)
+                    
+    return weights

@@ -60,3 +60,5 @@ class OptimizationSubMenu(bpy.types.Menu):
         layout.prop(context.scene, "merge_ratio")
         
         layout.operator("rinasplugin.merge_bones_main")
+        col.separator()  
+        layout.operator("rinasplugin.remove_zero_weight_bones")
