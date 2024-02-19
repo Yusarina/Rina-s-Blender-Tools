@@ -20,3 +20,4 @@ class SettingsSubMenu(bpy.types.Menu):
 
         col.separator()
         col.separator()
+        

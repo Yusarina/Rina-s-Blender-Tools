@@ -27,6 +27,7 @@ from bpy.props import EnumProperty
 import core.common
 import core.addonpreferences
 import core.translations
+import core.updater
 import functions.otheroptimizations
 import functions.combine_materials
 import functions.join_meshes
@@ -42,6 +43,7 @@ import ui.settings
 importlib.reload(core.common)
 importlib.reload(core.addonpreferences)
 importlib.reload(core.translations)
+importlib.reload(core.updater)
 importlib.reload(functions.otheroptimizations)
 importlib.reload(functions.combine_materials)
 importlib.reload(functions.join_meshes)
@@ -52,11 +54,12 @@ importlib.reload(ui.quick_access)
 importlib.reload(ui.optimization)
 importlib.reload(ui.otheroptions)
 importlib.reload(ui.credits)
-importlib.reload(ui.settings)
+importlib.reload(ui.settings)    
     
 def register():
     core.translations.load_translations()
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
+    bpy.utils.register_class(core.updater.AddonUpdater)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.utils.register_class(functions.otheroptimizations.RemoveDoubles)
@@ -88,7 +91,7 @@ def register():
         name="Plugin Language",
         items=core.translations.language_items,
         default="en",
-        update=core.translations.update_language
+        update=core.translations.update_language  
     )
     
 def unregister():
@@ -107,6 +110,7 @@ def unregister():
     bpy.utils.unregister_class(ui.otheroptions.OtherOptionsSubMenu)
     bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
     bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
+    bpy.utils.unregister_class(core.updater.AddonUpdater)
     bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)
     del bpy.types.Scene.merge_base_bone
     del bpy.types.Scene.merge_ratio
