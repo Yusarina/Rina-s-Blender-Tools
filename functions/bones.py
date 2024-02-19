@@ -109,6 +109,7 @@ class MergeBones(bpy.types.Operator):
 
 def delete_zero_weight(armature):
     bpy.ops.object.mode_set(mode='EDIT')
+    unselect_all()
 
     bone_names_to_work_on = {b.name for b in armature.data.edit_bones}
     
@@ -160,3 +161,30 @@ class RemoveZeroWeightBones(bpy.types.Operator):
             self.report({'INFO'}, f"Deleted {deleted_bones} zero weight bones")
         
         return {'FINISHED'}
+    
+def remove_constraints(context):
+    obj = context.active_object
+    
+    if obj and obj.type == 'ARMATURE':
+        removed = False
+        for bone in obj.pose.bones:
+            for con in bone.constraints:
+                bone.constraints.remove(con)
+                removed = True
+
+    return {'FINISHED'} if removed else {'CANCELLED'}
+
+class RemoveConstraints(bpy.types.Operator):
+    """Remove all constraints from armature"""
+    bl_idname = "rinasplugin.remove_constraints"
+    bl_label = "Remove Constraints"
+
+    def execute(self, context):
+        result = remove_constraints(context)
+        
+        if result == {'FINISHED'}:
+            self.report({'INFO'}, "Removed bone constraints")
+        else:
+            self.report({'INFO'}, "No bone constraints to remove")
+            
+        return result

@@ -62,3 +62,4 @@ class OptimizationSubMenu(bpy.types.Menu):
         layout.operator("rinasplugin.merge_bones_main")
         col.separator()  
         layout.operator("rinasplugin.remove_zero_weight_bones")
+        layout.operator("rinasplugin.remove_constraints")
