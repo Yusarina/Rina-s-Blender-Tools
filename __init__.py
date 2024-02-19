@@ -90,7 +90,6 @@ def register():
         update=core.translations.update_language
     )
     
-
 def unregister():
     bpy.utils.unregister_class(functions.otheroptimizations.RemoveDoubles)
     bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)

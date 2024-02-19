@@ -10,11 +10,29 @@ from bpy.types import Object, ShapeKey
 from bmesh import new
 from bmesh.types import BMVert
 
+def hide(obj, val=True):
+    if hasattr(obj, 'hide_set'):
+        obj.hide_set(val)
+    elif hasattr(obj, 'hide'):
+        obj.hide = val
+
+def select(obj, sel=True):
+    if obj is not None:
+        hide(obj, False)
+        obj.select_set(sel)
+
 def get_armature(context):
     """Fetch armature from scene"""
     for ob in context.scene.objects:
         if ob.type == 'ARMATURE':
             return ob
+        
+def get_objects():
+    return bpy.context.view_layer.objects
+        
+def unselect_all():
+    for obj in get_objects():
+        select(obj, False)
             
 def get_meshes(armature):
    """Get armature's mesh children"""

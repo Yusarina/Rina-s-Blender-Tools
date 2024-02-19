@@ -1,6 +1,6 @@
 import bpy
 import re
-from core.common import get_armature
+from core.common import get_objects, get_meshes, get_armature, unselect_all
 from bpy.props import EnumProperty
 
 exclude_bones = ['Hips', 'Chest', 'Thumb', 'Head', 'Neck', 'Spine', 'Twist', 'Eye', 'Tongue', 'Finger', 'Shoulder', 'Arm', 'Elbow', 'Wrist', 'Leg', 'Knee', 'Ankle', 'Toe', 'Teeth', 'Hand']
@@ -106,61 +106,57 @@ class MergeBones(bpy.types.Operator):
         self.report({'INFO'}, f"Merged {num_merged} bones")
 
         return {'FINISHED'}
-        
+
+def delete_zero_weight(armature):
+    bpy.ops.object.mode_set(mode='EDIT')
+
+    bone_names_to_work_on = {b.name for b in armature.data.edit_bones}
+    
+    bone_name_to_edit_bone = {}
+    for eb in armature.data.edit_bones:
+        bone_name_to_edit_bone[eb.name] = eb
+
+    used_vertex_groups = set()
+    vgroup_name_to_objects = {}
+    for obj in get_meshes(armature):
+        vgroup_to_name = {v.index: v.name for v in obj.vertex_groups}
+        for v in obj.data.vertices:
+            for g in v.groups:
+                if g.weight > 0:
+                    name = vgroup_to_name.get(g.group)
+                    used_vertex_groups.add(name)
+                    if name not in vgroup_name_to_objects:
+                        vgroup_name_to_objects[name] = set()
+                    vgroup_name_to_objects[name].add(obj)
+
+    unused_bones = bone_names_to_work_on - used_vertex_groups
+
+    count = 0
+    for name in unused_bones:
+        armature.data.edit_bones.remove(bone_name_to_edit_bone[name])
+        count += 1
+        if name in vgroup_name_to_objects:
+            for obj in vgroup_name_to_objects[name]:
+                vgroup = obj.vertex_groups.get(name)
+                if vgroup:
+                    obj.vertex_groups.remove(vgroup)
+
+    bpy.ops.object.mode_set(mode='OBJECT')
+    
+    return count
+
 class RemoveZeroWeightBones(bpy.types.Operator):
-    """Remove bones with zero weight from the selected armature"""
     bl_idname = "rinasplugin.remove_zero_weight_bones"
     bl_label = "Remove Zero Weight Bones"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        # Automatically get armature 
-        armature = None
-        for obj in context.scene.objects:
-            if obj.type == 'ARMATURE':
-                armature = obj
-                break
-                
-        if not armature:
-            self.report({'ERROR'}, "No armature found in scene")
-            return {'CANCELLED'}
-            
-        meshes = get_linked_meshes(armature)
-        
-        zero_bones = []
-        for bone in armature.pose.bones:  
-            weights = get_bone_weights(meshes, bone)
-            
-            if sum(weights) == 0.01:
-                zero_bones.append(bone)
-                
-        for bone in zero_bones:
-            bone.bone.use_deform = False
-            
-        armature.data.bones.update()
-        
-        bpy.ops.object.mode_set(mode='EDIT')
-        bpy.ops.armature.delete()
-        bpy.ops.object.mode_set(mode='OBJECT')
-
-        self.report({'INFO'}, f"{len(zero_bones)} zero weight bones removed")
-
-        return {'FINISHED'}
-
+    bl_options = {'REGISTER', 'UNDO'} 
     
-def get_linked_meshes(armature):
-    meshes = []
-    for mod in armature.modifiers:
-        if mod.type == 'ARMATURE':
-            meshes.append(mod.object) 
-    return meshes
-
-def get_bone_weights(meshes, bone):
-    weights = []
-    for mesh in meshes:
-        for vertex in mesh.data.vertices:
-            for group in vertex.groups:
-                if mesh.vertex_groups[group.group].name == bone.name:  
-                    weights.append(group.weight)
-                    
-    return weights
+    def execute(self, context):
+        armature = get_armature(context)
+        deleted_bones = delete_zero_weight(armature)
+        
+        if deleted_bones == 0:
+            self.report({'INFO'}, "No unused bones found")
+        else:
+            self.report({'INFO'}, f"Deleted {deleted_bones} zero weight bones")
+        
+        return {'FINISHED'}
