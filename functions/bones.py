@@ -29,8 +29,8 @@ def bone_is_excluded(bone_name):
 
 def get_bone_items(self, context):
 
-    armature = context.active_object
-    if not armature or armature.type != 'ARMATURE':
+    armature = get_armature(context)
+    if not armature:
         return []
 
     items = []
@@ -163,11 +163,11 @@ class RemoveZeroWeightBones(bpy.types.Operator):
         return {'FINISHED'}
     
 def remove_constraints(context):
-    obj = context.active_object
+    armature = get_armature(context)
     
-    if obj and obj.type == 'ARMATURE':
+    if armature and armature.type == 'ARMATURE':
         removed = False
-        for bone in obj.pose.bones:
+        for bone in armature.pose.bones:
             for con in bone.constraints:
                 bone.constraints.remove(con)
                 removed = True
