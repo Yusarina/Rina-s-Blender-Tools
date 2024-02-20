@@ -29,20 +29,20 @@ class OptimizationSubMenu(bpy.types.Menu):
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.join_all_meshes", text=t("JoinAllMeshes.label"))
-        row.operator("rinasplugin.join_selected_meshes", text=t("JoinSelectedMeshes.label"))
+        row.operator("rinasplugin.join_all_meshes")
+        row.operator("rinasplugin.join_selected_meshes")
         col.separator()
         col.separator()
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.remove_doubles", text=t("RemoveDoubles.label"))
+        row.operator("rinasplugin.remove_doubles")
         col.separator()
         col.separator()
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.combine_materials", text=t("CombineMaterials.label"))
+        row.operator("rinasplugin.combine_materials")
         col.separator()
         col.separator()
 
