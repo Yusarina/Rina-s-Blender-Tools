@@ -1,7 +1,7 @@
 import bpy
 from core.common import fix_uv_coordinates
 from core.translations import t
-from core.common import get_armature
+from core.common import get_armature, get_meshes, unselect_all
 
 class JoinAllMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_all_meshes"    
@@ -28,11 +28,13 @@ class JoinAllMeshes(bpy.types.Operator):
         bpy.ops.object.mode_set(mode='OBJECT')
 
         # Deselect all objects
-        bpy.context.view_layer.objects.active = None
-        bpy.ops.object.select_all(action='DESELECT')
+        unselect_all()
 
         # Select all mesh objects
-        bpy.ops.object.select_by_type(type='MESH')
+        meshes = get_meshes(get_armature(context))
+
+        for mesh in meshes:
+            mesh.select_set(True)
 
         # Check if there are selected objects before joining
         selected_objects = bpy.context.selected_objects
@@ -49,6 +51,9 @@ class JoinAllMeshes(bpy.types.Operator):
 
             # Switch back to Object Mode
             bpy.ops.object.mode_set(mode='OBJECT')
+
+            # Deselect all objects again on end
+            unselect_all()
 
             # Report success message
             self.report({'INFO'}, "Meshes joined successfully")
@@ -72,7 +77,8 @@ class JoinSelectedMeshes(bpy.types.Operator):
 
     # Join selected meshes.
     def join_selected_meshes(self, context):
-        selected_objects = [obj for obj in bpy.context.selected_objects if obj.type == 'MESH']
+        meshes = get_meshes(get_armature(context))
+        selected_objects = [m for m in meshes if m.select_get()] 
 
         if not selected_objects:
             # Report message if no mesh objects are selected
@@ -88,8 +94,7 @@ class JoinSelectedMeshes(bpy.types.Operator):
             return
 
         # Deselect all objects
-        bpy.context.view_layer.objects.active = None
-        bpy.ops.object.select_all(action='DESELECT')
+        unselect_all()
 
         # Select the selected mesh objects
         for obj in selected_objects:
@@ -109,6 +114,9 @@ class JoinSelectedMeshes(bpy.types.Operator):
 
             # Switch back to Object Mode
             bpy.ops.object.mode_set(mode='OBJECT')
+
+            # Deselect all objects again on end
+            unselect_all()
 
             # Report success message
             self.report({'INFO'}, "Meshes joined successfully")
