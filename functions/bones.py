@@ -1,6 +1,7 @@
 import bpy
 import re
 from core.common import get_objects, get_meshes, get_armature, unselect_all
+from core.translations import t
 from bpy.props import EnumProperty
 
 exclude_bones = ['Hips', 'Chest', 'Thumb', 'Head', 'Neck', 'Spine', 'Twist', 'Eye', 'Tongue', 'Finger', 'Shoulder', 'Arm', 'Elbow', 'Wrist', 'Leg', 'Knee', 'Ankle', 'Toe', 'Teeth', 'Hand']
@@ -42,27 +43,28 @@ def get_bone_items(self, context):
 
 class MergeBones(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bones_main"
-    bl_label =  "Merge Bones"
-    bl_options = {'REGISTER', 'UNDO'}
+    bl_label = t("MergeBones.label")
+    bl_description = t("MergeBones.description")
+    bl_options = {'REGISTER', 'UNDO'} 
 
     def execute(self, context):
         scene = context.scene
         base_bone_name = context.scene.rinas_plugin.merge_base_bone
 
         if not base_bone_name:
-            self.report({'ERROR'}, "No base bone selected")
+            self.report({'ERROR'}, t('MergeBones.error.no_base_bone'))
             return {'CANCELLED'}    
 
         armature_obj = context.active_object
 
         if not armature_obj or armature_obj.type != 'ARMATURE':
-            self.report({"ERROR"}, "No armature object set")
+            self.report({'ERROR'}, t('MergeBones.error.no_armature'))
             return {"CANCELLED"}
         
         armature = armature_obj.data
 
         if not armature:
-            self.report({"ERROR"}, "Invalid armature object")
+            self.report({'ERROR'}, t('MergeBones.error.invalid_armature'))
             return {"CANCELLED"}
 
         # print("All bones in the armature:")
@@ -73,7 +75,7 @@ class MergeBones(bpy.types.Operator):
         base_bone = armature.bones.get(base_bone_name)
 
         if not base_bone:
-            self.report({'ERROR'}, "Invalid base bone") 
+            self.report({'ERROR'}, t('MergeBones.error.invalid_base_bone'))
             return {'CANCELLED'}
         
         # print(f"Base bone found: {base_bone.name}")
@@ -99,11 +101,11 @@ class MergeBones(bpy.types.Operator):
                 edit_bone.parent = armature.edit_bones[parent_name] 
                 armature.edit_bones.remove(edit_bone)
             else:
-                self.report({'ERROR'}, f"Parent bone {edit_bone.name} not found")
+                self.report({'ERROR'}, t('MergeBones.error.parent_bone_not_found').format(bone_name=edit_bone.name))
                 return {'CANCELLED'}
 
         bpy.ops.object.mode_set(mode='OBJECT')
-        self.report({'INFO'}, f"Merged {num_merged} bones")
+        self.report({'INFO'}, t('MergeBones.info.merged_bones').format(count=num_merged))
 
         return {'FINISHED'}
 
@@ -148,7 +150,8 @@ def delete_zero_weight(armature):
 
 class RemoveZeroWeightBones(bpy.types.Operator):
     bl_idname = "rinasplugin.remove_zero_weight_bones"
-    bl_label = "Remove Zero Weight Bones"
+    bl_label = t("RemoveZeroWeightBones.label")
+    bl_description = t("RemoveZeroWeightBones.description")
     bl_options = {'REGISTER', 'UNDO'} 
     
     def execute(self, context):
@@ -156,10 +159,10 @@ class RemoveZeroWeightBones(bpy.types.Operator):
         deleted_bones = delete_zero_weight(armature)
         
         if deleted_bones == 0:
-            self.report({'INFO'}, "No unused bones found")
+            self.report({'INFO'}, t('RemoveZeroWeightBones.info.no_bones_found'))
         else:
-            self.report({'INFO'}, f"Deleted {deleted_bones} zero weight bones")
-        
+            self.report({'INFO'}, t('RemoveZeroWeightBones.info.removed_zero_bones').format(count=deleted_bones))
+                
         return {'FINISHED'}
     
 def remove_constraints(context):
@@ -175,16 +178,17 @@ def remove_constraints(context):
     return {'FINISHED'} if removed else {'CANCELLED'}
 
 class RemoveConstraints(bpy.types.Operator):
-    """Remove all constraints from armature"""
     bl_idname = "rinasplugin.remove_constraints"
-    bl_label = "Remove Constraints"
+    bl_label = t("RemoveConstraints.label")
+    bl_description = t("RemoveConstraints.description")
+    bl_options = {'REGISTER', 'UNDO'} 
 
     def execute(self, context):
         result = remove_constraints(context)
         
         if result == {'FINISHED'}:
-            self.report({'INFO'}, "Removed bone constraints")
+            self.report({'INFO'}, t('RemoveConstraints.info.success'))
         else:
-            self.report({'INFO'}, "No bone constraints to remove")
+            self.report({'INFO'}, t('RemoveConstraints.info.no_constraints'))
             
         return result

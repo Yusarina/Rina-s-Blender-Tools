@@ -18,6 +18,8 @@ RinasBlenderToolsPanel.Settings,Settings,設定,설정
 SettingsSubMenu.label,Settings,設定,설정
 SettingsSubMenu.LanguageLabel,Language,言語,언어
 OptimizationSubMenu.label,Optimization,最適化,최적화
+OptimizationSubMenu.BoneOptions,Bone Options,ボーンオプション,ボーン 옵션
+OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제
 QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
 SeparateByMaterial.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리
 SeparateByMaterial.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리
@@ -66,3 +68,21 @@ RemoveDoubles.description,"Removes doubles from the all meshes however:
 
 - 수동으로 하는 것보다 낫습니다.
 - 그러나 메쉬에 모양 키가 있는 경우 복식은 제거되지 않습니다."
+MergeBones.label,Merge Bones,ボーンを結合,볼머리를 결합
+MergeBones.description,Allows you to choose an parent bones and merge all the children bones to it at a ratio set by you,ボーンを選択して、親ボーンとすべての子ボーンをそれに比率で結合します。,선택한 볼머리와 모든 자식 볼머리를 선택한 볼머리에 비
+MergeBones.base_bone,Base Bone,ベースボーン,기준 볼머리
+MergeBones.ratio,Ratio,比率,비율
+MergeBones.error.no_base_bone,No base bone selected,ベースボーンが選択されていません,기준 볼머리가 선택되지 않았습니다
+MergeBones.error.no_armature,No armature selected,アーマチュアが選択されていません,아바타가 선택되지 않았습니다
+MergeBones.error.invalid_armature,Invalid armature selected,無効なアーマチュアが選択されています,아바타가 잘못 선택되
+MergeBones.error.invalid_base_bone,Invalid base bone,無効なベースボーンが選択されています,기준 볼머리가 잘못 선택되었습니다
+MergeBones.error.parent_bone_not_found,Parent bone {bone_name} not found,親ボーン {bone_name} が見つかりません,부모 볼머리 {bone_name}을 찾을 수 없습니다
+MergeBones.info.merged_bones,Merged {count} bones,ボーン {count} 個を結合しました,볼머리 {count} 개를 결합했습니다
+RemoveZeroWeightBones.label,Remove Zero Weight Bones,ゼロウェイトボーンを削除,무게가 0인 볼머리를 제거
+RemoveZeroWeightBones.description,Removes all bones that have zero weight,すべてのボーンのウェイトがゼロのボーンを削除します,모든 볼머리의 무게가 0인 볼머리를 제거합니다
+RemoveZeroWeightBones.info.no_bones_found,No Unused Bones Found,未使用のボーンが見つかりませんでした,사용되지 않는 볼머리를 찾을 수 없습니다
+RemoveZeroWeightBones.info.removed_zero_bones,Deleted {count} zero weight bones,ゼロウェイトボーン {count} 個を削除しました,무게가 0인 볼머리 {count} 개를 삭제했습니다
+RemoveConstraints.label,Remove Constraints,制約を削除,제약 조건 제거
+RemoveConstraints.description,Removes all constraints from all bones,すべてのボーンからすべての制約を削除します,모든 볼머리에서 모든 제약 조건을 제거합니다
+RemoveConstraints.info.success,Removed bone constraints,ボーン制約を削除しました,볼머리 제약 조건을 삭제했습니다
+RemoveConstraints.info.no_constraints,No bone constraints found,ボーン制約が見つかりませんでした,볼머리 제약 조건을 찾을 수 없습니다
