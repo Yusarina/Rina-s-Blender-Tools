@@ -1,6 +1,6 @@
 import bpy 
 from core.translations import t
-from core.common import get_armature, get_meshes
+from core.common import get_armature, get_meshes, unselect_all, fix_uv_coordinates
 
 class SeparateByMaterials(bpy.types.Operator):
     bl_idname = "rinasplugin.separate_by_mesh"
@@ -13,12 +13,23 @@ class SeparateByMaterials(bpy.types.Operator):
         return get_armature(context) is not None
 
     def execute(self, context):
-        for obj in bpy.context.scene.objects:
-            if obj.type == 'MESH':
-                bpy.context.view_layer.objects.active = obj 
-                bpy.ops.object.mode_set(mode='EDIT')
-                bpy.ops.mesh.separate(type='MATERIAL')
-                bpy.ops.object.mode_set(mode='OBJECT')
+        armature = get_armature(context)
+        meshes = get_meshes(armature)
+
+        for mesh in meshes:
+
+            unselect_all()
+
+            mesh.select_set(True)
+            context.view_layer.objects.active = mesh
+
+            bpy.ops.object.mode_set(mode='EDIT')
+            bpy.ops.mesh.separate(type='MATERIAL')
+            bpy.ops.object.mode_set(mode='OBJECT')
+
+            fix_uv_coordinates(context)
+
+        self.report({'INFO'}, t('SeparateByMaterial.success'))
         return {'FINISHED'}
 
 class SeparateLooseParts(bpy.types.Operator):
@@ -32,11 +43,22 @@ class SeparateLooseParts(bpy.types.Operator):
         return get_armature(context) is not None
 
     def execute(self, context):
-        for obj in bpy.context.scene.objects:
-            if obj.type == 'MESH':
-                bpy.context.view_layer.objects.active = obj
-                bpy.ops.object.mode_set(mode='EDIT') 
-                bpy.ops.mesh.separate(type='LOOSE')
-                bpy.ops.object.mode_set(mode='OBJECT')
+        armature = get_armature(context)
+        meshes = get_meshes(armature)
+
+        for mesh in meshes:
+
+            unselect_all()
+
+            mesh.select_set(True)
+            context.view_layer.objects.active = mesh
+
+            bpy.ops.object.mode_set(mode='EDIT') 
+            bpy.ops.mesh.separate(type='LOOSE')
+            bpy.ops.object.mode_set(mode='OBJECT')
+
+            fix_uv_coordinates(context)
+
+        self.report({'INFO'}, t('SeparateLooseParts.success'))
         return {'FINISHED'}
     
