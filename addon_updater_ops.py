@@ -1526,7 +1526,7 @@ def unregister():
         bpy.utils.unregister_class(cls)
 
     # Clear global vars since they may persist if not restarting blender.
-    updater.clear_state()  # Clear internal vars, avoids reloading oddities.
+        updater.clear_state()  # Clear internal vars, avoids reloading oddities.
 
     global ran_auto_check_install_popup
     ran_auto_check_install_popup = False

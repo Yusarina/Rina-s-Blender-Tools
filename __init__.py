@@ -155,7 +155,6 @@ def register():
     )
     
 def unregister():
-    addon_updater_ops.register(bl_info)
     bpy.utils.unregister_class(functions.otheroptimizations.RemoveDoubles)
     bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)
     bpy.utils.unregister_class(functions.join_meshes.JoinAllMeshes)
