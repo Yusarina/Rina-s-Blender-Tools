@@ -72,7 +72,7 @@ except Exception as e:
 # not match and have errors. Must be all lowercase and no spaces! Should also
 # be unique among any other addons that could exist (using this updater code),
 # to avoid clashes in operator registration.
-updater.addon = "addon_updater"
+updater.addon = "rinatools_addon_updater"
 
 
 # -----------------------------------------------------------------------------
@@ -1357,12 +1357,12 @@ def register(bl_info):
 
     # Choose your own repository, must match git name for GitHUb and Bitbucket,
     # for GitLab use project ID (numbers only).
-    updater.repo = "Rinas-Blender-Tools-Updater-Test"
+    updater.repo = "Rina-s-Blender-Tools"
 
     # updater.addon = # define at top of module, MUST be done first
 
     # Website for manual addon download, optional but recommended to set.
-    updater.website = "https://github.com/Yusarina/Rinas-Blender-Tools-Updater-Test/"
+    updater.website = "https://github.com/Yusarina/Rina-s-Blender-Tools/"
 
     # Addon subfolder path.
     # "sample/path/to/addon"

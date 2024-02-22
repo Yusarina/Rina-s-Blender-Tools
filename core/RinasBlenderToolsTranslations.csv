@@ -17,6 +17,14 @@ RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧
 RinasBlenderToolsPanel.Settings,Settings,設定,설정
 SettingsSubMenu.label,Settings,設定,설정
 SettingsSubMenu.LanguageLabel,Language,言語,언어
+SettingsSubMenu.UpdateLabel,Update,更新,업데이트
+SettingsSubMenu.UpdateLastChecked,Last Checked,最後にチェック,마지막으로 확인
+SettingsSubMenu.UpdateLastCheckedNone,Last Checked Never,最後にチェックなし,마지막으로 확인하지 않음
+SettingsSubMenu.UpdateNow,"Update Now to: ","今すぐ更新: ","지금 바로 업데이트: "
+SettingsSubMenu.UpToDate,Plugin is up to date,プラグインは最新です,플러그인이 최신입니다
+SettingsSubMenu.CheckingUpdate,Checking...,チェック中...,"확인 중..."
+SettingsSubMenu.ReinstallAddon,"(Re)install addon version","アドオンのバージョンを(再)インストール","(재)설치 버전의 추가 기능"
+SettingsSubMenu.RestoreAddon,"Restore addon version: ","アドオンのバージョンを復元: ","추가 기능 버전을 복원: "
 OptimizationSubMenu.label,Optimization,最適化,최적화
 OptimizationSubMenu.BoneOptions,Bone Options,ボーンオプション,ボーン 옵션
 OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제

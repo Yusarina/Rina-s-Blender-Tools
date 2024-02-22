@@ -9,7 +9,6 @@ class QuickAccessSubMenu(bpy.types.Menu):
     def draw(self, context):
         scene = context.scene
         layout = self.layout
-        addon_updater_ops.check_for_update_background()
         box = layout.box()
         col = box.column(align=True)
         split = col.row(align=True)

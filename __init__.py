@@ -27,6 +27,7 @@ sys.path.append(file_dir)
 from bpy.props import EnumProperty
 from . import addon_updater_ops
 from ui.settings import SettingsSubMenu
+from addon_updater_ops import updater
 
 import core.common
 import core.addonpreferences
@@ -59,7 +60,7 @@ importlib.reload(ui.credits)
 importlib.reload(ui.settings)
 
 @addon_updater_ops.make_annotations
-class DemoPreferences(bpy.types.AddonPreferences):
+class UpdaterPreferences(bpy.types.AddonPreferences):
 	"""Demo bare-bones preferences"""
 	bl_idname = __package__
 
@@ -108,15 +109,15 @@ class DemoPreferences(bpy.types.AddonPreferences):
 		addon_updater_ops.update_settings_ui(self, context)
         
 classes = (
-    DemoPreferences,
-    SettingsSubMenu
+    SettingsSubMenu,
+    UpdaterPreferences
 ) 
           
 def register():
     core.translations.load_translations()
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
-    bpy.utils.register_class(DemoPreferences)
     addon_updater_ops.register(bl_info)
+    bpy.utils.register_class(UpdaterPreferences)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.utils.register_class(functions.otheroptimizations.RemoveDoubles)
@@ -153,6 +154,8 @@ def register():
         default="en",
         update=core.translations.update_language  
     )
+
+    updater.check_for_update_now()
     
 def unregister():
     bpy.utils.unregister_class(functions.otheroptimizations.RemoveDoubles)
@@ -171,7 +174,7 @@ def unregister():
     bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
     bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
     bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)
-    bpy.utils.unregister_class(DemoPreferences)
+    bpy.utils.unregister_class(UpdaterPreferences)
     del bpy.types.Scene.merge_base_bone
     del bpy.types.Scene.merge_ratio
     del bpy.types.Scene.show_credits
