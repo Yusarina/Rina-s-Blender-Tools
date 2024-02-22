@@ -1,5 +1,6 @@
 import bpy
 from core.translations import t
+import addon_updater_ops
 
 class SettingsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Settings'
@@ -20,4 +21,10 @@ class SettingsSubMenu(bpy.types.Menu):
 
         col.separator()
         col.separator()
+        
+        mainrow = layout.row()
+        col = mainrow.column()
+
+		# Updater draw function, could also pass in col as third arg.
+        addon_updater_ops.update_settings_ui(self, context)
         

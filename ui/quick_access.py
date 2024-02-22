@@ -1,5 +1,6 @@
 import bpy
 from core.translations import t
+import addon_updater_ops
 
 class QuickAccessSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_QuickAccess'
@@ -8,11 +9,13 @@ class QuickAccessSubMenu(bpy.types.Menu):
     def draw(self, context):
         scene = context.scene
         layout = self.layout
+        addon_updater_ops.check_for_update_background()
         box = layout.box()
         col = box.column(align=True)
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.5
+    
 
         col.separator()
         col.separator()
@@ -23,3 +26,4 @@ class QuickAccessSubMenu(bpy.types.Menu):
         row.operator("rinasplugin.combine_materials")
         col.separator()
         col.separator()
+        addon_updater_ops.update_notice_box_ui(self, context)
