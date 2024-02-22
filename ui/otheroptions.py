@@ -12,9 +12,14 @@ class OtherOptionsSubMenu(bpy.types.Menu):
         col = box.column(align=True)
         split = col.row(align=True)
         row = split.row(align=True)
+        sub = col.column(align=True)
         row.scale_y = 1.5
 
         col.separator()
+        split = col.row(align=True)
+        row = split.row(align=True)
+        row.scale_y = 1.1
+        sub.label(text=t("OtherOptions.SeperateOptions"), icon='NONE')
         col.separator()
         split = col.row(align=True)
         row = split.row(align=True)

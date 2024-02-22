@@ -16,11 +16,11 @@ class SettingsSubMenu(bpy.types.Menu):
         col.label(text=t("SettingsSubMenu.LanguageLabel"))
 
         col.separator()
+        col.separator()
         
         split = col.row(align=True)
         split.prop(context.scene, 'plugin_language', text='')
 
-        col.separator()
         col.separator()
         
         element = self.layout

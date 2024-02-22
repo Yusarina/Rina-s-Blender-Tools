@@ -33,7 +33,10 @@ class CreditsSubMenu(bpy.types.Menu):
 
         col.separator()
 
-        split = box.split() # Split to align
+        split = box.split()
         row = split.row()
         row.scale_y = 1.1
         row.operator("wm.url_open", text=t('CreditsSubMenu.YusarinaWebsite'), icon='INFO').url = "https://yusarina.xyz"
+        split = box.split()
+        row = split.row()
+        row.operator("wm.url_open", text=t('CreditsSubMenu.Yusarinakofi'), icon='INFO').url = "https://ko-fi.com/yusarina"

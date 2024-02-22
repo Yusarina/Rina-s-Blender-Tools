@@ -5,7 +5,7 @@ from core.common import get_armature, get_meshes, unselect_all
 
 class JoinAllMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_all_meshes"    
-    bl_label = t("CombineMaterials.label")
+    bl_label = t("JoinAllMeshes.label")
     bl_description = t('JoinAllMeshes.description')
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -63,8 +63,8 @@ class JoinAllMeshes(bpy.types.Operator):
 
 class JoinSelectedMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_selected_meshes"
-    bl_label = t("CombineMaterials.label")
-    bl_description = t("CombineMaterials.description")
+    bl_label = t("JoinSelectedMeshes.label")
+    bl_description = t("JoinSelectedMeshes.description")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod

@@ -1,4 +1,5 @@
 import bpy
+import addon_updater_ops
 from ui.quick_access import QuickAccessSubMenu
 from ui.optimization import OptimizationSubMenu
 from ui.otheroptions import OtherOptionsSubMenu
@@ -34,6 +35,7 @@ class RinasBlenderToolsPanel(bpy.types.Panel):
 
         col.separator()
         col.separator()
+        addon_updater_ops.update_notice_box_ui(self, context)
 
         split = box.split() 
         row = split.row()

@@ -5,6 +5,7 @@ CreditsSubMenu.CreditsTitle,"Rina's Blender Tools Credits!","Rina の Blender �
 CreditsSubMenu.ForTheCommunity1,Made with love for the VRChat,VRChatへの愛を込めて作られています,VRChat에 대한 사랑으로 제작되었습니다
 CreditsSubMenu.ForTheCommunity2,and blender community!,そしてブレンダーコミュニティ！,그리고 블렌더 커뮤니티!
 CreditsSubMenu.YusarinaWebsite,"Yusarina's Website","ユーザーのウェブサイト","사용자의 웹사이트"
+CreditsSubMenu.Yusarinakofi,"Support Me On Ko-fi!","Ko-fi でサポートする!","Ko-fi에서 지원해주세요!"
 RinasBlenderToolsPanel.label,"Rina's Blender Tools","Rina の Blender ツール","리나의 블렌더 도구"
 RinasBlenderToolsPanel.WikiLabel1,"Thank you for using Rina's","いつもリナをご利用いただき誠にありがとうございます","리나를 이용해 주셔서 감사합니다."
 RinasBlenderToolsPanel.WikiLabel2,"blender tools, if you need help","Blender ツール (ヘルプが必要な場合)","도움이 필요한 경우 블렌더 도구"
@@ -15,9 +16,10 @@ RinasBlenderToolsPanel.Optimization,Optimization,最適化,최적화
 RinasBlenderToolsPanel.OtherOptions,Other Options,その他のオプション,기타 옵션
 RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧
 RinasBlenderToolsPanel.Settings,Settings,設定,설정
+OtherOptions.SeperateOptions,"Separate Meshes Options:","メッシュオプションを分離:","메쉬 옵션을 분리:"
 SettingsSubMenu.label,Settings,設定,설정
-SettingsSubMenu.LanguageLabel,Language,言語,언어
-SettingsSubMenu.UpdateLabel,Update,更新,업데이트
+SettingsSubMenu.LanguageLabel,"Language:","言語:","언어:"
+SettingsSubMenu.UpdateLabel,"Update:","更新:","업데이트:"
 SettingsSubMenu.UpdateLastChecked,Last Checked,最後にチェック,마지막으로 확인
 SettingsSubMenu.UpdateLastCheckedNone,Last Checked Never,最後にチェックなし,마지막으로 확인하지 않음
 SettingsSubMenu.UpdateNow,"Update Now to: ","今すぐ更新: ","지금 바로 업데이트: "
@@ -26,8 +28,9 @@ SettingsSubMenu.CheckingUpdate,Checking...,チェック中...,"확인 중..."
 SettingsSubMenu.ReinstallAddon,"(Re)install addon version","アドオンのバージョンを(再)インストール","(재)설치 버전의 추가 기능"
 SettingsSubMenu.RestoreAddon,"Restore addon version: ","アドオンのバージョンを復元: ","추가 기능 버전을 복원: "
 OptimizationSubMenu.label,Optimization,最適化,최적화
-OptimizationSubMenu.BoneOptions,Bone Options,ボーンオプション,ボーン 옵션
+OptimizationSubMenu.BoneOptions,"Bone Options:","ボーンオプション:","ボーン 옵션:"
 OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제
+OptimizationSubMenu.MeshOptions,"Mesh Options:","メッシュオプション:","메시 옵션:"
 QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
 SeparateByMaterial.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리
 SeparateByMaterial.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리
