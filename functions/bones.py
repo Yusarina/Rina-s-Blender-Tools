@@ -4,7 +4,7 @@ from core.common import get_objects, get_meshes, get_armature, unselect_all
 from core.translations import t
 from bpy.props import EnumProperty
 
-exclude_bones = ['Hips', 'Chest', 'Thumb', 'Head', 'Neck', 'Spine', 'Twist', 'Eye', 'Tongue', 'Finger', 'Shoulder', 'Arm', 'Elbow', 'Wrist', 'Leg', 'Knee', 'Ankle', 'Toe', 'Teeth', 'Hand']
+exclude_bones = ['Hips', 'Chest', 'Thumb', 'Head', 'Neck', 'Spine', 'Twist', 'Eye', 'Tongue', 'Finger', 'Shoulder', 'Arm', 'Elbow', 'Wrist', 'Leg', 'Knee', 'Ankle', 'Toe', 'Teeth', 'Hand', 'BreastUpper2']
 
 def bone_is_excluded(bone_name):
 
@@ -14,20 +14,15 @@ def bone_is_excluded(bone_name):
     if any(exclude.lower() in bone_name for exclude in exclude_bones):
         return True
 
-    # Filter out 2+ digits at end
-    if re.search(r'\d{2,}$', bone_name):
+    if re.search(r'([\._]_*\d{3,})', bone_name):
         return True
 
-    # Filter out .002+, _002+ patterns
-    if re.search(r'([\._]_*\d{3,})$', bone_name):
-        return True
-
-    # Filter out 002+ patterns after side suffix
-    if re.search(r'[\._]?\d{3,}[_.]?[LR]$', bone_name):
+    if re.search(r'[\._]?\d{3,}[_.]?[LR]', bone_name):
         return True
     
-    return False
-
+    if re.search(r'\d', bone_name):
+        return True
+    
 def get_bone_items(self, context):
 
     armature = get_armature(context)
@@ -37,6 +32,7 @@ def get_bone_items(self, context):
     items = []
     for bone in armature.data.bones:
         if not bone_is_excluded(bone.name):
+            print(f"Letting through: {bone.name}") 
             items.append((bone.name, bone.name, ""))
 
     return items
