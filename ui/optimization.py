@@ -78,7 +78,7 @@ class OptimizationSubMenu(bpy.types.Menu):
         row.operator("rinasplugin.merge_bones_main")
         split = col.row(align=True)
         row = split.row(align=True)
-        row.scale_y = 0.3
+        row.scale_y = 1.1 
         col = box.column(align=True)
         split = col.row(align=True)
         row = split.row(align=True)
@@ -86,6 +86,7 @@ class OptimizationSubMenu(bpy.types.Menu):
         sub.label(text=t("OptimizationSubMenu.BoneOptionsDelete"), icon='X')  
         split = col.row(align=True)
         row = split.row(align=True)
+        row.scale_y = 1.1 
         col.separator() 
         row.operator("rinasplugin.remove_zero_weight_bones")
         row.operator("rinasplugin.remove_constraints")
