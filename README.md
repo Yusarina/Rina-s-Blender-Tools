@@ -1,6 +1,4 @@
-# Rina-s-Blender-Tools Dev
-
-## This is the dev version of the tool's this version could be unstable but may also have the latest fixes/ features!
+# Rina-s-Blender-Tools
 
 Rina's Blender Tools is an set of tools to help shorten steps needed to optimize models into VRChat or other Games. Currently only does a few things but I planning to build even more features into these tools.
 
