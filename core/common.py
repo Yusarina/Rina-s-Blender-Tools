@@ -1,11 +1,38 @@
 import bpy
-import re
+import bmesh
+import numpy as np
+
+
+import mathutils
+from functools import lru_cache
+from core.translations import t
+from bpy.types import Object, ShapeKey
+from bmesh import new
+from bmesh.types import BMVert
+
+def hide(obj, val=True):
+    if hasattr(obj, 'hide_set'):
+        obj.hide_set(val)
+    elif hasattr(obj, 'hide'):
+        obj.hide = val
+
+def select(obj, sel=True):
+    if obj is not None:
+        hide(obj, False)
+        obj.select_set(sel)
 
 def get_armature(context):
     """Fetch armature from scene"""
     for ob in context.scene.objects:
         if ob.type == 'ARMATURE':
             return ob
+        
+def get_objects():
+    return bpy.context.view_layer.objects
+        
+def unselect_all():
+    for obj in get_objects():
+        select(obj, False)
             
 def get_meshes(armature):
    """Get armature's mesh children"""
@@ -18,12 +45,9 @@ def get_meshes(armature):
 ### Clean up material names in the given mesh by removing the '.001' suffix.
 def clean_material_names(mesh):
     for j, mat in enumerate(mesh.material_slots):
-        if mat.name.endswith('.001'):
+        if mat.name.endswith(('.0+', ' 0+')):
             mesh.active_material_index = j
-            mesh.active_material.name = mat.name[:-4]
-        if mat.name.endswith(('. 001', ' .001')):
-            mesh.active_material_index = j
-            mesh.active_material.name = mat.name[:-5]
+            mesh.active_material.name = mat.name[:-len(mat.name.rstrip('0')) - 1]
 
 # This will fix faulty uv coordinates, cats did this a other way which can have unintended consequences, 
 # this is the best way i could of think of doing this for the time being.
@@ -45,3 +69,86 @@ def fix_uv_coordinates(context):
         bpy.ops.object.mode_set(mode='OBJECT')
     else:
         print("Object is not a valid mesh with UV data")
+
+def has_shapekeys(mesh_obj: Object) -> bool:
+    return mesh_obj.data.shape_keys is not None
+
+@lru_cache(maxsize=None)
+def _get_shape_key_co(shape_key: ShapeKey) -> np.ndarray:
+    return np.array([v.co for v in shape_key.data])
+
+def remove_doubles(mesh_obj: Object, threshold: float, save_shapes: bool = True) -> int:
+    if not isinstance(mesh_obj, Object):
+        raise TypeError("mesh_obj must be an instance of Object")
+    if threshold <= 0:
+        raise ValueError("Threshold must be positive")
+
+    mesh = mesh_obj.data
+
+    if not has_shapekeys(mesh_obj) or len(mesh.shape_keys.key_blocks) == 1:
+        return 0
+
+    pre_polygons = len(mesh.polygons)
+
+    if save_shapes:
+        vertex_selection = np.full(len(mesh.vertices), True, dtype=bool)
+        cached_co_getter = lru_cache(maxsize=None)(_get_shape_key_co)
+        for kb in mesh.shape_keys.key_blocks[1:]:
+            relative_key = kb.relative_key
+            if kb == relative_key:
+                continue
+            same = cached_co_getter(kb) == cached_co_getter(relative_key)
+            vertex_not_moved_by_shape_key = np.all(same.reshape(-1, 3), axis=1)
+            vertex_selection &= vertex_not_moved_by_shape_key
+        del cached_co_getter
+
+        if not vertex_selection.any():
+            return 0
+
+        if vertex_selection.all():
+            save_shapes = False
+        else:
+            bpy.context.view_layer.objects.active = mesh_obj
+            bpy.ops.object.mode_set(mode='EDIT')
+            verts = list(bmesh.from_edit_mesh(mesh).verts)
+            for v in verts:
+                v.select = vertex_selection[v.index]
+            bpy.ops.object.mode_set(mode='OBJECT')
+            bpy.context.view_layer.update()
+    else:
+        bmesh.ops.select_all(bm, action='DESELECT')
+
+    bm = bmesh.new()
+    bm.from_mesh(mesh)
+    if save_shapes:
+        verts = [v for v in bm.verts if v.select]
+    else:
+        verts = bm.verts
+
+    total_verts = len(verts)
+    progress_steps = 100
+    progress_step_size = total_verts // progress_steps
+    progress = 0
+
+    bmesh.ops.remove_doubles(bm, verts=verts, dist=threshold)
+
+    while progress < total_verts:
+        bm.select_flush(True)
+        bpy.context.view_layer.update()
+        bpy.context.window_manager.progress_update(progress / total_verts)
+        progress += progress_step_size
+
+    bm.to_mesh(mesh)
+
+    return pre_polygons - len(mesh.polygons)
+
+def make_annotations(cls):
+    bl_props = {k: v for k, v in cls.__dict__.items() if isinstance(v, bpy.props._PropertyDeferred)}
+    if bl_props:
+        if '__annotations__' not in cls.__dict__:
+            setattr(cls, '__annotations__', {})
+        annotations = cls.__dict__['__annotations__']
+        for k, v in bl_props.items():
+            annotations[k] = v
+            delattr(cls, k)
+    return cls

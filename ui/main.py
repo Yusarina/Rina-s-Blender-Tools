@@ -1,6 +1,8 @@
 import bpy
+import addon_updater_ops
 from ui.quick_access import QuickAccessSubMenu
 from ui.optimization import OptimizationSubMenu
+from ui.otheroptions import OtherOptionsSubMenu
 from ui.credits import CreditsSubMenu
 from ui.settings import SettingsSubMenu
 from core.translations import t
@@ -33,6 +35,7 @@ class RinasBlenderToolsPanel(bpy.types.Panel):
 
         col.separator()
         col.separator()
+        addon_updater_ops.update_notice_box_ui(self, context)
 
         split = box.split() 
         row = split.row()
@@ -52,6 +55,13 @@ class RinasBlenderToolsPanel(bpy.types.Panel):
         if scene.show_optimization:
             # Call the submenu class
             OptimizationSubMenu.draw(self, context)
+
+        box = layout.box()
+        row = box.row()  
+        row.prop(scene, "show_other_options", text=t("RinasBlenderToolsPanel.OtherOptions"), icon="TRIA_DOWN" if scene.show_other_options else "TRIA_RIGHT", emboss=False)
+        if scene.show_other_options:
+            # Call the submenu class
+            OtherOptionsSubMenu.draw(self, context)
 
         box = layout.box()
         row = box.row()  

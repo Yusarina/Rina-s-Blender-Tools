@@ -1,10 +1,10 @@
 import bpy
 from core.translations import t
 
-class QuickAccessSubMenu(bpy.types.Menu):
-    bl_idname = 'VIEW3D_MT_RINA_QuickAccess'
-    bl_label = t('QuickAccessSubMenu.label')
-    
+class OtherOptionsSubMenu(bpy.types.Menu):
+    bl_idname = 'VIEW3D_MT_RINA_OtherOptions'
+    bl_label = t('RinasBlenderToolsPanel.OtherOptions')
+
     def draw(self, context):
         scene = context.scene
         layout = self.layout
@@ -12,15 +12,20 @@ class QuickAccessSubMenu(bpy.types.Menu):
         col = box.column(align=True)
         split = col.row(align=True)
         row = split.row(align=True)
+        sub = col.column(align=True)
         row.scale_y = 1.5
-    
 
-        col.separator()
         col.separator()
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.join_all_meshes")
-        row.operator("rinasplugin.combine_materials")
+        sub.label(text=t("OtherOptions.SeperateOptions"), icon='NONE')
+        col.separator()
+        split = col.row(align=True)
+        row = split.row(align=True)
+        row.scale_y = 1.1
+        row.operator("rinasplugin.separate_by_mesh")
+        row.operator("rinasplugin.separate_loose_parts")
         col.separator()
         col.separator()
+
