@@ -112,7 +112,7 @@ classes = (
     SettingsSubMenu,
     UpdaterPreferences
 ) 
-          
+
 def register():
     core.translations.load_translations()
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)

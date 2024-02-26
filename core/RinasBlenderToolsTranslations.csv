@@ -32,9 +32,9 @@ OptimizationSubMenu.BoneOptions,"Bone Options:","ボーンオプション:","ボ
 OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제
 OptimizationSubMenu.MeshOptions,"Mesh Options:","メッシュオプション:","메시 옵션:"
 QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
-SeparateByMaterial.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리
-SeparateByMaterial.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리
-SeparateByMaterial.success,Sucessfully separated all meshes by materials,すべてのメッシュをマテリアルごとに分離しました,모든 메시를 메테리얼별로 분리했습니다
+SeparateByMaterials.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리
+SeparateByMaterials.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리
+SeparateByMaterials.success,Sucessfully separated all meshes by materials,すべてのメッシュをマテリアルごとに分離しました,모든 메시를 메테리얼별로 분리했습니다
 SeparateLooseParts.label,Separate by Loose Parts,ローズな部分ごとに分離,무거운 부분으로 분리
 SeparateLooseParts.description,Separates all loose parts into their own objects,すべてのローズな部分を個別のオブジェクト,모든 무거운 부분을 개별 객체로 분리
 SeparateLooseParts.success,Sucessfully separated all loose parts,すべてのローズな部分を分離しました,모든 무거운 부분을 분리했습니다

@@ -24,7 +24,7 @@ class OtherOptionsSubMenu(bpy.types.Menu):
         split = col.row(align=True)
         row = split.row(align=True)
         row.scale_y = 1.1
-        row.operator("rinasplugin.separate_by_mesh")
+        row.operator("rinasplugin.separate_by_materials")
         row.operator("rinasplugin.separate_loose_parts")
         col.separator()
         col.separator()
