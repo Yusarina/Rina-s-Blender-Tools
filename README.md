@@ -28,7 +28,8 @@ Please [clcik here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Requir
 
 ### Help:
 
-Need some help, [click here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki) to find the manual which hopefully helps you (Coming soon).
+Need some help, [click here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Manual) to find the manual which hopefully helps you.
+You can find common issues and known bugs [here](https://github.com/Yusarina/Rina-s-Blender-Tools/wiki/Common-issues-and-known-bugs).
 
 ### Feedback:
 
