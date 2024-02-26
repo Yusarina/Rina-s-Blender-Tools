@@ -29,9 +29,9 @@ from . import addon_updater_ops
 from ui.settings import SettingsSubMenu
 from addon_updater_ops import updater
 
-import core.common
 import core.addonpreferences
 import core.translations
+import core.common
 import functions.otheroptimizations
 import functions.combine_materials
 import functions.join_meshes
@@ -44,9 +44,9 @@ import ui.otheroptions
 import ui.credits
 import ui.settings
 
-importlib.reload(core.common)
 importlib.reload(core.addonpreferences)
 importlib.reload(core.translations)
+importlib.reload(core.common)
 importlib.reload(functions.otheroptimizations)
 importlib.reload(functions.combine_materials)
 importlib.reload(functions.join_meshes)
