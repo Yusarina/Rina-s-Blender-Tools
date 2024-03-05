@@ -140,7 +140,7 @@ def register():
     bpy.types.Scene.rinas_plugin = bpy.props.PointerProperty(type=ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_ratio = bpy.props.FloatProperty(min=0.0, max=100.0, default=50.0)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
-    bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=True)
+    bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=False)
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
     bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
