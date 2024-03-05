@@ -32,7 +32,7 @@ def get_bone_items(self, context):
     items = []
     for bone in armature.data.bones:
         if not bone_is_excluded(bone.name):
-            print(f"Letting through: {bone.name}") 
+            # print(f"Letting through: {bone.name}") 
             items.append((bone.name, bone.name, ""))
 
     return items
