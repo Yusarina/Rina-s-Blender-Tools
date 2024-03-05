@@ -46,6 +46,7 @@ CombineMaterials.description,"Combines similar materials into one
  問題がある場合はお知らせください。","유사한 자료를 하나로 결합하면 이 
  작업 후에 아바타가 비슷하게 보일 것입니다. 
  문제가 있는 경우 알려주십시오."
+CombineMaterials.info.combine_materials,{count} materials combined,{count} メッシュが結合されました,{count} 메시가 결합되었습니다
 JoinAllMeshes.label,Join All Meshes,すべてのメッシュを結合,모든 메시를 결합
 JoinAllMeshes.description,"Joins all meshes into one it will also do the following:
 
@@ -57,6 +58,9 @@ JoinAllMeshes.description,"Joins all meshes into one it will also do the followi
 
 - 가입 시 UV 코드 수정을 시도합니다.
 - 합류 시 모든 변환이 적용됩니다."
+JoinAllMeshes.info.warning,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.
+JoinAllMeshes.info.success,Sucessfully joined all meshes,すべてのメッシュを結合しました,모든 메시를 결합했습니다.
+JoinAllMeshes.info.noobject,No active object. No mesh objects selected for joining,アクティブなオブジェクトがありません。結合するメッシュオブジェクトが選択されていません。,활성 객체가
 JoinSelectedMeshes.label,Join Selected Meshes,選択したメッシュを結合,선택한 메시를 결합
 JoinSelectedMeshes.description,"Joins selected meshes into one it will also do the following:
 
@@ -68,6 +72,10 @@ JoinSelectedMeshes.description,"Joins selected meshes into one it will also do t
 
 - 가입 시 UV 코드 수정을 시도합니다.
 - 합류 시 모든 변환이 적용됩니다."
+JoinSelectedMeshes.warning.noobject,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.
+JoinSelectedMeshes.warning.noslectedmeshs,No active object. No mesh objects selected for joining,アクティブなオブジェクトがありません。結合するメッシュオブジェクトが選択されていません。,활성 객체가 없습니다. 메시 객체를 선택하지 않았습니다.
+JoinSelectedMeshes.info.warning,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.
+JoinSelectedMeshes.info.success,Sucessfully joined all selected meshes,すべての選択したメッシュを結合しました,모든 선택한 메시를 결합했습니다.
 RemoveDoubles.label,Remove Doubles,重複を削除,중복 제거
 RemoveDoubles.description,"Removes doubles from the all meshes however:
 
@@ -79,6 +87,8 @@ RemoveDoubles.description,"Removes doubles from the all meshes however:
 
 - 수동으로 하는 것보다 낫습니다.
 - 그러나 메쉬에 모양 키가 있는 경우 복식은 제거되지 않습니다."
+RemoveDoubles.Error.nomesh,No mesh object selected!,メッシュオブジェクトが選択されていません!,메시 객체를 선택하지 않았습니다!
+RemoveDoubles.info.remove_doubles,Removed {count} tris by merging vertices,重複を削除しました。重複した三角形数: {count},삭제된 삼각형 수: {count}
 MergeBones.label,Merge Bones,ボーンを結合,볼머리를 결합
 MergeBones.description,Allows you to choose an parent bones and merge all the children bones to it at a ratio set by you,ボーンを選択して、親ボーンとすべての子ボーンをそれに比率で結合します。,선택한 볼머리와 모든 자식 볼머리를 선택한 볼머리에 비
 MergeBones.base_bone,Base Bone,ベースボーン,기준 볼머리

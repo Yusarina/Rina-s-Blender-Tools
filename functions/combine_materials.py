@@ -57,7 +57,7 @@ def get_base_name(name):
     return mat_match.group(1) if mat_match else name
 
 def report_consolidated(self, num_combined):
-    self.report({'INFO'}, f'{num_combined} materials combined')
+    self.report({'INFO'}, t('CombineMaterials.info.combine_materials').format(count=num_combined))
 
 class CombineMaterials(bpy.types.Operator):
     bl_idname = "rinasplugin.combine_materials"

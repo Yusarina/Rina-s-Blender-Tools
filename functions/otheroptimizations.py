@@ -12,11 +12,11 @@ class RemoveDoubles(bpy.types.Operator):
         obj = context.active_object
 
         if not obj or obj.type != 'MESH':
-            self.report({'ERROR'}, "No mesh object selected!")
+            self.report({'ERROR'}, t('RemoveDoubles.Error.nomesh'))
             return {'CANCELLED'}
         
         threshold = 0.00001 # set threshold value
         removed_tris = remove_doubles(obj, threshold, save_shapes=True)
         
-        self.report({'INFO'}, f"Removed {removed_tris} tris by merging vertices")
+        self.report({'INFO'}, t('RemoveDoubles.info.remove_doubles').format(count=removed_tris))
         return {'FINISHED'}
