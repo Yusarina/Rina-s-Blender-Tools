@@ -2,7 +2,7 @@ bl_info = {
     "name": "Rina's Blender Tools",
     "author": "Yusarina",
     "description": "A collection of tools to help make models easier to work with in VRChat or other Games.",
-    "version": (4, 0, 1, 0),
+    "version": (4, 0, 1, 1),
     "blender": (4, 0, 0),
     "location": "View3D > Sidebar",
     "description": "An set of tools to help shorten steps needed to optimize models into VRChat or other Games. Currently only does a few things but I planning to build even more features into these tools.",
