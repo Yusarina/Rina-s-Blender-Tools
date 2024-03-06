@@ -29,9 +29,9 @@ from . import addon_updater_ops
 from ui.settings import SettingsSubMenu
 from addon_updater_ops import updater
 
-import core.common
 import core.addonpreferences
 import core.translations
+import core.common
 import functions.otheroptimizations
 import functions.combine_materials
 import functions.join_meshes
@@ -44,9 +44,9 @@ import ui.otheroptions
 import ui.credits
 import ui.settings
 
-importlib.reload(core.common)
 importlib.reload(core.addonpreferences)
 importlib.reload(core.translations)
+importlib.reload(core.common)
 importlib.reload(functions.otheroptimizations)
 importlib.reload(functions.combine_materials)
 importlib.reload(functions.join_meshes)
@@ -112,7 +112,7 @@ classes = (
     SettingsSubMenu,
     UpdaterPreferences
 ) 
-          
+
 def register():
     core.translations.load_translations()
     bpy.utils.register_class(core.addonpreferences.AddonPreferences)
@@ -140,7 +140,7 @@ def register():
     bpy.types.Scene.rinas_plugin = bpy.props.PointerProperty(type=ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_ratio = bpy.props.FloatProperty(min=0.0, max=100.0, default=50.0)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
-    bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=True)
+    bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=False)
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
     bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)

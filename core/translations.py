@@ -8,6 +8,8 @@ from . import __package__
 
 language_items = [
     ("en", "English", "English"),
+    ("fr", "French", "French"),
+    ("sp", "Spanish", "Spanish"),
     ("ja", "Japanese", "Japanese"),
     ("ko", "Korean", "Korean")
 ]
@@ -35,7 +37,9 @@ def load_translations():
             translations[text_id] = {
                 "en": row["en"],
                 "ja": row["ja"],
-                "ko": row["ko"]
+                "ko": row["ko"],
+                "fr": row["fr"],
+                "sp": row["sp"]
             }
 
 def t(text_id):

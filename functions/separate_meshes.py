@@ -3,9 +3,9 @@ from core.translations import t
 from core.common import get_armature, get_meshes, unselect_all, fix_uv_coordinates
 
 class SeparateByMaterials(bpy.types.Operator):
-    bl_idname = "rinasplugin.separate_by_mesh"
-    bl_label = t("SeparateByMaterial.label")
-    bl_description = t("SeparateByMaterial.description")
+    bl_idname = "rinasplugin.separate_by_materials"
+    bl_label = t("SeparateByMaterials.label")
+    bl_description = t("SeparateByMaterials.description")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -29,7 +29,7 @@ class SeparateByMaterials(bpy.types.Operator):
 
             fix_uv_coordinates(context)
 
-        self.report({'INFO'}, t('SeparateByMaterial.success'))
+        self.report({'INFO'}, t('SeparateByMaterials.success'))
         return {'FINISHED'}
 
 class SeparateLooseParts(bpy.types.Operator):

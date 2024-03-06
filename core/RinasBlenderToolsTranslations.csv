@@ -1,52 +1,59 @@
-name,en,ja,ko
-RinasBlenderToolsPanel.label,"Rina's Blender Tools","Rina の Blender ツール","리나의 블렌더 도구"
-CreditsSubMenu.label,Credits,クレジット,크레딧
-CreditsSubMenu.CreditsTitle,"Rina's Blender Tools Credits!","Rina の Blender ツールのクレジット!","Rina의 블렌더 도구 크레딧!"
-CreditsSubMenu.ForTheCommunity1,Made with love for the VRChat,VRChatへの愛を込めて作られています,VRChat에 대한 사랑으로 제작되었습니다
-CreditsSubMenu.ForTheCommunity2,and blender community!,そしてブレンダーコミュニティ！,그리고 블렌더 커뮤니티!
-CreditsSubMenu.YusarinaWebsite,"Yusarina's Website","ユーザーのウェブサイト","사용자의 웹사이트"
-CreditsSubMenu.Yusarinakofi,"Support me on Ko-fi!","Ko-fi でサポートする!","Ko-fi에서 지원해주세요!"
-RinasBlenderToolsPanel.label,"Rina's Blender Tools","Rina の Blender ツール","리나의 블렌더 도구"
-RinasBlenderToolsPanel.WikiLabel1,"Thank you for using Rina's","いつもリナをご利用いただき誠にありがとうございます","리나를 이용해 주셔서 감사합니다."
-RinasBlenderToolsPanel.WikiLabel2,"blender tools, if you need help","Blender ツール (ヘルプが必要な場合)","도움이 필요한 경우 블렌더 도구"
-RinasBlenderToolsPanel.WikiLabel3,help please visit the wiki below!,以下の Wiki を参照してください。,도와주세요 아래 위키를 방문해주세요!
-RinasBlenderToolsPanel.OpenWiki,Wiki,ウィキ,위키
-RinasBlenderToolsPanel.QuickAccess,Quick Access,クイックアクセス,빠른 액세스
-RinasBlenderToolsPanel.Optimization,Optimization,最適化,최적화
-RinasBlenderToolsPanel.OtherOptions,Other Options,その他のオプション,기타 옵션
-RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧
-RinasBlenderToolsPanel.Settings,Settings,設定,설정
-OtherOptions.SeperateOptions,"Separate Meshes Options:","メッシュオプションを分離:","메쉬 옵션을 분리:"
-SettingsSubMenu.label,Settings,設定,설정
-SettingsSubMenu.LanguageLabel,"Language:","言語:","언어:"
-SettingsSubMenu.UpdateLabel,"Update:","更新:","업데이트:"
-SettingsSubMenu.UpdateLastChecked,Last Checked,最後にチェック,마지막으로 확인
-SettingsSubMenu.UpdateLastCheckedNone,Last Checked Never,最後にチェックなし,마지막으로 확인하지 않음
-SettingsSubMenu.UpdateNow,"Update Now to: ","今すぐ更新: ","지금 바로 업데이트: "
-SettingsSubMenu.UpToDate,Plugin is up to date,プラグインは最新です,플러그인이 최신입니다
-SettingsSubMenu.CheckingUpdate,Checking...,チェック中...,"확인 중..."
-SettingsSubMenu.ReinstallAddon,"(Re)install addon version","アドオンのバージョンを(再)インストール","(재)설치 버전의 추가 기능"
-SettingsSubMenu.RestoreAddon,"Restore addon version: ","アドオンのバージョンを復元: ","추가 기능 버전을 복원: "
-OptimizationSubMenu.label,Optimization,最適化,최적화
-OptimizationSubMenu.BoneOptions,"Bone Options:","ボーンオプション:","ボーン 옵션:"
-OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제
-OptimizationSubMenu.MeshOptions,"Mesh Options:","メッシュオプション:","메시 옵션:"
-QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스
-SeparateByMaterial.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리
-SeparateByMaterial.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리
-SeparateByMaterial.success,Sucessfully separated all meshes by materials,すべてのメッシュをマテリアルごとに分離しました,모든 메시를 메테리얼별로 분리했습니다
-SeparateLooseParts.label,Separate by Loose Parts,ローズな部分ごとに分離,무거운 부분으로 분리
-SeparateLooseParts.description,Separates all loose parts into their own objects,すべてのローズな部分を個別のオブジェクト,모든 무거운 부분을 개별 객체로 분리
-SeparateLooseParts.success,Sucessfully separated all loose parts,すべてのローズな部分を分離しました,모든 무거운 부분을 분리했습니다
-CombineMaterials.label,Combine Materials,マテリアルを結合,메테리얼을 결합
+name,en,ja,ko,fr,sp
+RinasBlenderToolsPanel.label,"Rina's Blender Tools","Rina の Blender ツール","리나의 블렌더 도구","Outils de mixage de Rina","Herramientas de licuadora de Rina"
+CreditsSubMenu.label,Credits,クレジット,크레딧,Crédits,Créditos
+CreditsSubMenu.CreditsTitle,"Rina's Blender Tools Credits!","Rina の Blender ツールのクレジット!","Rina의 블렌더 도구 크레딧!","Crédits de Rina","Créditos de Rina"
+CreditsSubMenu.ForTheCommunity1,Made with love for the VRChat,VRChatへの愛を込めて作られています,VRChat에 대한 사랑으로 제작되었습니다,Fait avec amour pour la communauté VRChat,Hecho con amor para la comunidad VRChat
+CreditsSubMenu.ForTheCommunity2,and blender community!,そしてブレンダーコミュニティ！,그리고 블렌더 커뮤니티!,et la communauté Blender!,y la comunidad Blender!
+CreditsSubMenu.YusarinaWebsite,"Yusarina's Website","ユーザーのウェブサイト","사용자의 웹사이트","Visitez notre site web","Visitea nuestro sitio web"
+CreditsSubMenu.Yusarinakofi,"Support me on Ko-fi!","Ko-fi でサポートする!","Ko-fi에서 지원해주세요!",Soutenez-moi sur Ko-fi!,Apoyeme en Ko-fi!
+RinasBlenderToolsPanel.label,"Rina's Blender Tools","Rina の Blender ツール","리나의 블렌더 도구","Outils de mixage de Rina","Herramientas de licuadora de Rina"
+RinasBlenderToolsPanel.WikiLabel1,"Thank you for using Rina's","いつもリナをご利用いただき誠にありがとうございます","리나를 이용해 주셔서 감사합니다.",Merci d'utiliser Rina's,Gracias por usar Rina's
+RinasBlenderToolsPanel.WikiLabel2,"blender tools, if you need help","Blender ツール (ヘルプが必要な場合)","도움이 필요한 경우 블렌더 도구","si vous avez besoin d'aide",si necesitas ayuda
+RinasBlenderToolsPanel.WikiLabel3,help please visit the wiki below!,以下の Wiki を参照してください。,도와주세요 아래 위키를 방문해주세요!,Veuillez visiter le wiki ci-dessous!,Visite el wiki a continuación
+RinasBlenderToolsPanel.OpenWiki,Wiki,ウィキ,위키,Wiki,Wiki
+RinasBlenderToolsPanel.QuickAccess,Quick Access,クイックアクセス,빠른 액세스,Accès rapide,Acceso rápido
+RinasBlenderToolsPanel.Optimization,Optimization,最適化,최적화,Optimisation,Optimización
+RinasBlenderToolsPanel.OtherOptions,Other Options,その他のオプション,기타 옵션,Autres options,Otras opciones
+RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧,Crédits,Créditos
+RinasBlenderToolsPanel.Settings,Settings,設定,설정,Paramètres,Configuraciones
+OtherOptions.SeperateOptions,"Separate Meshes Options:","メッシュオプションを分離:","메쉬 옵션을 분리:","Options de séparation des maillages:","Opciones de separación de mallas:"
+SettingsSubMenu.label,Settings,設定,설정,Paramètres,Configuraciones
+SettingsSubMenu.LanguageLabel,"Language:","言語:","언어:","Langue:","Idioma:"
+SettingsSubMenu.UpdateLabel,"Update:","更新:","업데이트:","Mise à jour:","Actualización:"
+SettingsSubMenu.UpdateLastChecked,Last Checked,最後にチェック,마지막으로 확인,Dernièrement vérifié,Última vez verificado
+SettingsSubMenu.UpdateLastCheckedNone,Last Checked Never,最後にチェックなし,마지막으로 확인하지 않음,Dernièrement vérifié jamais,Última vez verificado nunca
+SettingsSubMenu.UpdateNow,"Update Now to: ","今すぐ更新: ","지금 바로 업데이트: ",Mettre à jour maintenant vers: ",Mete ahora a actualizar a:
+SettingsSubMenu.UpToDate,Plugin is up to date,プラグインは最新です,플러그인이 최신입니다,El plugin está actualizado,El plugin está actualizado
+SettingsSubMenu.CheckingUpdate,Checking...,チェック中...,"확인 중...",Vérification...,Comprobando...
+SettingsSubMenu.ReinstallAddon,"(Re)install addon version","アドオンのバージョンを(再)インストール","(재)설치 버전의 추가 기능","installer la version de l'addon","instalar la versión del addon"
+SettingsSubMenu.RestoreAddon,"Restore addon version: ","アドオンのバージョンを復元: ","추가 기능 버전을 복원: ","Restaurer la version de l'addon: ","Restaurar la versión del addon:"
+OptimizationSubMenu.label,Optimization,最適化,최적화,Optimisation,Optimización
+OptimizationSubMenu.BoneOptions,"Bone Options:","ボーンオプション:","ボーン 옵션:","Options de Bone:","Opciones de hues:"
+OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제,Supprimer,Eliminar
+OptimizationSubMenu.MeshOptions,"Mesh Options:","メッシュオプション:","메시 옵션:","Options de maillage:","Opciones de malla:"
+QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스,Accès rapide,Acceso rápido
+SeparateByMaterials.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리,Séparer par matériaux,Separar por materiales
+SeparateByMaterials.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리,Séparez tous les maillages par leur matériau,Separar todas las mallas por su material
+SeparateByMaterials.success,Sucessfully separated all meshes by materials,すべてのメッシュをマテリアルごとに分離しました,모든 메시를 메테리얼별로 분리했습니다,Séparé tous les maillages par leur matériau,Separar todas las mallas por su material
+SeparateLooseParts.label,Separate by Loose Parts,ローズな部分ごとに分離,무거운 부분으로 분리,Séparer par pièces libre,Separar por piezas libres
+SeparateLooseParts.description,Separates all loose parts into their own objects,すべてのローズな部分を個別のオブジェクト,모든 무거운 부분을 개별 객체로 분리,Séparez toutes les pièces libre en leur propre objet,Separar todas las piezas libres en su propio objeto
+SeparateLooseParts.success,Sucessfully separated all loose parts,すべてのローズな部分を分離しました,모든 무거운 부분을 분리했습니다,Séparé toutes les pièces libre,Separar todas las piezas libres
+CombineMaterials.label,Combine Materials,マテリアルを結合,메테리얼을 결합,Combiner les matériaux,Combinar materiales
 CombineMaterials.description,"Combines similar materials into one
  your avtar should look similar after this operations 
  if you have issues please let us know","類似したマテリアルを 1 つに結合します。
  この操作後のアバターは同様に見えるはずです。
  問題がある場合はお知らせください。","유사한 자료를 하나로 결합하면 이 
  작업 후에 아바타가 비슷하게 보일 것입니다. 
- 문제가 있는 경우 알려주십시오."
-JoinAllMeshes.label,Join All Meshes,すべてのメッシュを結合,모든 메시를 결합
+ 문제가 있는 경우 알려주십시오.","
+ Combine des matériaux similaires en un seul
+ votre avtar devrait ressembler après ces opérations
+ si vous avez des problèmes veuillez nous le faire savoir",
+ Combina materiales similares en uno.
+ tu avtar debería verse similar después de estas operaciones
+ si tiene problemas por favor háganoslo saber"
+CombineMaterials.info.combine_materials,{count} materials combined,{count} メッシュが結合されました,{count} 메시가 결합되었습니다,{count} matériaux combinés,{count} materiales combinados
+JoinAllMeshes.label,Join All Meshes,すべてのメッシュを結合,모든 메시를 결합,Joindre tous les maillages,Combinar todos los mallas
 JoinAllMeshes.description,"Joins all meshes into one it will also do the following:
 
 - Will attempt to fix UV Cords when joining.
@@ -56,19 +63,38 @@ JoinAllMeshes.description,"Joins all meshes into one it will also do the followi
 - 参加時にすべての変換を適用します。","모든 메시를 하나로 결합하면 다음 작업도 수행됩니다.
 
 - 가입 시 UV 코드 수정을 시도합니다.
-- 합류 시 모든 변환이 적용됩니다."
-JoinSelectedMeshes.label,Join Selected Meshes,選択したメッシュを結合,선택한 메시를 결합
+- 합류 시 모든 변환이 적용됩니다.","Rejoint tous les maillages en un seul il effectuera également les opérations suivantes :
+
+- Tentera de réparer les cordons UV lors de l'adhésion.
+- Appliquera toutes les transformations lors de la connexion.","Une todas las mallas en una y también hará lo siguiente:
+
+- Intentará arreglar los cables UV al unirlos.
+- Aplicará todas las transformaciones al unirse."
+JoinAllMeshes.info.warning,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.,Aucun objet maillage sélectionné pour l'adhésion.,Ningún objeto de malla seleccionado para unirse.
+JoinAllMeshes.info.success,Sucessfully joined all meshes,すべてのメッシュを結合しました,모든 메시를 결합했습니다.,Séparé tous les maillages,Combinar todas las mallas
+JoinAllMeshes.info.noobject,No active object. No mesh objects selected for joining,アクティブなオブジェクトがありません。結合するメッシュオブジェクトが選択されていません。,활성 객체가 없습니다. 메시 객체를 선택하지 않았습니다.,Aucun objet maillage sélectionné pour l'adhésion.,Ningún objeto de malla seleccionado para unirse.
+JoinSelectedMeshes.label,Join Selected Meshes,選択したメッシュを結合,선택한 메시를 결합,Joindre les maillages sélectionnés,Combinar mallas seleccionadas
 JoinSelectedMeshes.description,"Joins selected meshes into one it will also do the following:
 
 - Will attempt to fix UV Cords when joining.
 - Will apply all transforms when joiing.","選択したメッシュを 1 つに結合します。また、次のことも行います。
 
 - 参加時に UV コードを修正しようとします。
-- 参加時にすべての変換を適用します。",선택한 메시를 하나로 결합하면 다음 작업도 수행됩니다.
+- 参加時にすべての変換を適用します。","선택한 메시를 하나로 결합하면 다음 작업도 수행됩니다.
 
 - 가입 시 UV 코드 수정을 시도합니다.
-- 합류 시 모든 변환이 적용됩니다."
-RemoveDoubles.label,Remove Doubles,重複を削除,중복 제거
+- 합류 시 모든 변환이 적용됩니다.","Joint les maillages sélectionnés en un seul il effectuera également les opérations suivantes:
+
+- Tentera de réparer les cordons UV lors de l'adhésion.
+- Appliquera toutes les transformations lors de la connexion.","Une las mallas seleccionadas en una sola y también hará lo siguiente:
+
+- Intentará arreglar los cables UV al unirlos.
+- Aplicará todas las transformaciones al unirse."
+JoinSelectedMeshes.warning.noobject,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.,"Aucun objet maillage sélectionné pour l'adhésion.","Ningún objeto de malla seleccionado para unirse."
+JoinSelectedMeshes.warning.noslectedmeshs,No active object. No mesh objects selected for joining,アクティブなオブジェクトがありません。結合するメッシュオブジェクトが選択されていません。,활성 객체가 없습니다. 메시 객체를 선택하지 않았습니다.,Aucun objet maillage sélectionné pour l'adhésion.,Ningún objeto de malla seleccionado para unirse.
+JoinSelectedMeshes.info.warning,No mesh objects selected for joining,結合するメッシュオブジェクトが選択されていません,메시 객체를 선택하지 않았습니다.,Aucun objet maillage sélectionné pour l'adhésion.,Ningún objeto de malla seleccionado para unirse.
+JoinSelectedMeshes.info.success,Sucessfully joined all selected meshes,すべての選択したメッシュを結合しました,모든 선택한 메시를 결합했습니다.,Séparé tous les maillages sélectionnés,Combinar todas las mallas seleccionadas
+RemoveDoubles.label,Remove Doubles,重複を削除,중복 제거,Supprimer les doubles,Eliminar duplicados
 RemoveDoubles.description,"Removes doubles from the all meshes however:
 
 - This is better then doing it manually 
@@ -78,22 +104,30 @@ RemoveDoubles.description,"Removes doubles from the all meshes however:
 - ただし、メッシュにシェイプ キーがある場合はダブルは削除されません。","그러나 모든 메시에서 double을 제거합니다.
 
 - 수동으로 하는 것보다 낫습니다.
-- 그러나 메쉬에 모양 키가 있는 경우 복식은 제거되지 않습니다."
-MergeBones.label,Merge Bones,ボーンを結合,볼머리를 결합
-MergeBones.description,Allows you to choose an parent bones and merge all the children bones to it at a ratio set by you,ボーンを選択して、親ボーンとすべての子ボーンをそれに比率で結合します。,선택한 볼머리와 모든 자식 볼머리를 선택한 볼머리에 비
-MergeBones.base_bone,Base Bone,ベースボーン,기준 볼머리
-MergeBones.ratio,Ratio,比率,비율
-MergeBones.error.no_base_bone,No base bone selected,ベースボーンが選択されていません,기준 볼머리가 선택되지 않았습니다
-MergeBones.error.no_armature,No armature selected,アーマチュアが選択されていません,아바타가 선택되지 않았습니다
-MergeBones.error.invalid_armature,Invalid armature selected,無効なアーマチュアが選択されています,아바타가 잘못 선택되
-MergeBones.error.invalid_base_bone,Invalid base bone,無効なベースボーンが選択されています,기준 볼머리가 잘못 선택되었습니다
-MergeBones.error.parent_bone_not_found,Parent bone {bone_name} not found,親ボーン {bone_name} が見つかりません,부모 볼머리 {bone_name}을 찾을 수 없습니다
-MergeBones.info.merged_bones,Merged {count} bones,ボーン {count} 個を結合しました,볼머리 {count} 개를 결합했습니다
-RemoveZeroWeightBones.label,Remove Zero Weight Bones,ゼロウェイトボーンを削除,무게가 0인 볼머리를 제거
-RemoveZeroWeightBones.description,Removes all bones that have zero weight,すべてのボーンのウェイトがゼロのボーンを削除します,모든 볼머리의 무게가 0인 볼머리를 제거합니다
-RemoveZeroWeightBones.info.no_bones_found,No Unused Bones Found,未使用のボーンが見つかりませんでした,사용되지 않는 볼머리를 찾을 수 없습니다
-RemoveZeroWeightBones.info.removed_zero_bones,Deleted {count} zero weight bones,ゼロウェイトボーン {count} 個を削除しました,무게가 0인 볼머리 {count} 개를 삭제했습니다
-RemoveConstraints.label,Remove Constraints,制約を削除,제약 조건 제거
-RemoveConstraints.description,Removes all constraints from all bones,すべてのボーンからすべての制約を削除します,모든 볼머리에서 모든 제약 조건을 제거합니다
-RemoveConstraints.info.success,Removed bone constraints,ボーン制約を削除しました,볼머리 제약 조건을 삭제했습니다
-RemoveConstraints.info.no_constraints,No bone constraints found,ボーン制約が見つかりませんでした,볼머리 제약 조건을 찾을 수 없습니다
+- 그러나 메쉬에 모양 키가 있는 경우 복식은 제거되지 않습니다.","Supprime cependant les doubles de tous les maillages :
+
+- C'est mieux que de le faire manuellement
+- cependant cela ne supprimera pas les doubles si le maillage a des clés de forme","Sin embargo elimina los dobles de todas las mallas:
+
+- Esto es mejor que hacerlo manualmente.
+- sin embargo no eliminará los dobleces si la malla tiene claves de forma"
+RemoveDoubles.Error.nomesh,No mesh object selected!,メッシュオブジェクトが選択されていません!,메시 객체를 선택하지 않았습니다!,Aucun objet maillé sélectionné !,No se ha seleccionado ningún objeto de malla!
+RemoveDoubles.info.remove_doubles,Removed {count} tris by merging vertices,重複した三角形を頂点を結合して削除しました,{count} 삼각형을 삭제했습니다,{count} tris en fusionnant les sommets,{count} tris fusionando vértices
+MergeBones.label,Merge Bones,ボーンを結合,볼머리를 결합,Fusionner les hues,Combinar hues
+MergeBones.description,Allows you to choose an parent bones and merge all the children bones to it at a ratio set by you,ボーンを選択して、親ボーンとすべての子ボーンをそれに比率で結合します。,아바타를 선택하고 모든 자식 볼머리를 그에 비율로 결합합니다.,Vous permet de choisir un os parent et d'y fusionner tous les os enfants selon un rapport défini par vous.,Le permite elegir un hueso principal y fusionar todos los huesos secundarios en una proporción establecida por usted
+MergeBones.base_bone,Base Bone,ベースボーン,기준 볼머리,Os de base,Hueso base
+MergeBones.ratio,Ratio,比率,비율,Rapport,Razón
+MergeBones.error.no_base_bone,No base bone selected,ベースボーンが選択されていません,기준 볼머리가 선택되지 않았습니다,Aucun hueso parent sélectionné,No se ha seleccionado ningún hueso principal.
+MergeBones.error.no_armature,No armature selected,アーマチュアが選択されていません,아바타가 선택되지 않았습니다,Aucune armure sélectionnée,No se ha seleccionado ninguna armadura.
+MergeBones.error.invalid_armature,Invalid armature selected,無効なアーマチュアが選択されています,아바타가 잘못 선택되,Armure sélectionnée invalide,Armadura seleccionada no válida
+MergeBones.error.invalid_base_bone,Invalid base bone,無効なベースボーンが選択されています,기준 볼머리가 잘못 선택되었습니다,Os de base invalide,Hueso base no válido
+MergeBones.error.parent_bone_not_found,Parent bone {bone_name} not found,親ボーン {bone_name} が見つかりません,부모 볼머리 {bone_name}을 찾을 수 없습니다,Hueso parent {bone_name} non trouvé,No se ha encontrado ningún hueso principal {bone_name
+MergeBones.info.merged_bones,Merged {count} bones,ボーン {count} 個を結合しました,볼머리 {count} 개를 결합했습니다,Fusionné {count} huesos,Combinado {count} huesos
+RemoveZeroWeightBones.label,Remove Zero Weight Bones,ゼロウェイトボーンを削除,무게가 0인 볼머리를 제거,Supprimer les huesos à poids zéro,Eliminar huesos con peso cero
+RemoveZeroWeightBones.description,Removes all bones that have zero weight,すべてのボーンのウェイトがゼロのボーンを削除します,모든 볼머리의 무게가 0인 볼머리를 제거합니다,Supprime tous les huesos à poids zéro,Eliminar todos los huesos con peso cero
+RemoveZeroWeightBones.info.no_bones_found,No Unused Bones Found,未使用のボーンが見つかりませんでした,사용되지 않는 볼머리를 찾을 수 없습니다,Aucun hueso non utilisé trouvé,No se han encontrado huesos no utilizados
+RemoveZeroWeightBones.info.removed_zero_bones,Deleted {count} zero weight bones,ゼロウェイトボーン {count} 個を削除しました,무게가 0인 볼머리 {count} 개를 삭제했습니다,Supprimé {count} huesos à poids zéro,Eliminado {count} huesos con peso cero
+RemoveConstraints.label,Remove Constraints,制約を削除,제약 조건 제거,Supprimer les contraintes,Eliminar restricciones
+RemoveConstraints.description,Removes all constraints from all bones,すべてのボーンからすべての制約を削除します,모든 볼머리에서 모든 제약 조건을 제거합니다,Supprime toutes les contraintes de tous les huesos,Eliminar todas las restricciones de todos los huesos
+RemoveConstraints.info.success,Removed bone constraints,ボーン制約を削除しました,볼머리 제약 조건을 삭제했습니다,Supprimé les contraintes de huesos,Eliminado las restricciones de huesos
+RemoveConstraints.info.no_constraints,No bone constraints found,ボーン制約が見つかりませんでした,볼머리 제약 조건을 찾을 수 없습니다,Aucune contrainte de hueso trouvée,No se han encontrado restricciones de huesos

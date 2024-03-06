@@ -37,9 +37,12 @@ def consolidate_textures(mat1, mat2):
 
                         # Copy texture slots
                         copy_tex_nodes(mat1, mat2)
+
+def color_match(col1, col2, tolerance=0.01):
+    return abs(col1[0] - col2[0]) < tolerance 
                 
-def materials_match(mat1, mat2):
-    if mat1.diffuse_color != mat2.diffuse_color:
+def materials_match(mat1, mat2, tolerance=0.01):
+    if not color_match(mat1.diffuse_color, mat2.diffuse_color, tolerance): 
         return False
     
     if mat1.roughness != mat2.roughness:
@@ -54,7 +57,7 @@ def get_base_name(name):
     return mat_match.group(1) if mat_match else name
 
 def report_consolidated(self, num_combined):
-    self.report({'INFO'}, f'{num_combined} materials combined')
+    self.report({'INFO'}, t('CombineMaterials.info.combine_materials').format(count=num_combined))
 
 class CombineMaterials(bpy.types.Operator):
     bl_idname = "rinasplugin.combine_materials"

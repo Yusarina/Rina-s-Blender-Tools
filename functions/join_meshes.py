@@ -21,7 +21,7 @@ class JoinAllMeshes(bpy.types.Operator):
     def join_all_meshes(self, context):
         # Check if there is an active object
         if context.active_object is None:
-            self.report({'WARNING'}, "No active object. No mesh objects selected for joining")
+            self.report({'INFO'}, t('JoinAllMeshes.info.noobject'))
             return
 
         # Switch to Object Mode to ensure correct context
@@ -56,10 +56,10 @@ class JoinAllMeshes(bpy.types.Operator):
             unselect_all()
 
             # Report success message
-            self.report({'INFO'}, "Meshes joined successfully")
+            self.report({'INFO'}, t('JoinAllMeshes.info.success'))
         else:
             # Report message if no mesh objects are selected
-            self.report({'WARNING'}, "No mesh objects selected for joining")
+            self.report({'WARNING'}, t('JoinAllMeshes.info.warning'))
 
 class JoinSelectedMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_selected_meshes"
@@ -82,7 +82,7 @@ class JoinSelectedMeshes(bpy.types.Operator):
 
         if not selected_objects:
             # Report message if no mesh objects are selected
-            self.report({'WARNING'}, "No mesh objects selected for joining")
+            self.report({'WARNING'}, t('JoinSelectedMeshes.warning.noobject'))
             return
 
         # Switch to Object Mode to ensure correct context
@@ -90,7 +90,7 @@ class JoinSelectedMeshes(bpy.types.Operator):
         
         # Check if there is an active object
         if context.active_object is None:
-            self.report({'WARNING'}, "No active object. No mesh objects selected for joining")
+            self.report({'WARNING'}, t('JoinSelectedMeshes.warning.noslectedmeshs'))
             return
 
         # Deselect all objects
@@ -119,8 +119,8 @@ class JoinSelectedMeshes(bpy.types.Operator):
             unselect_all()
 
             # Report success message
-            self.report({'INFO'}, "Meshes joined successfully")
+            self.report({'INFO'}, t('JoinSelectedMeshes.info.success'))
         else:
             # Report message if no mesh objects are selected (after deselecting all)
-            self.report({'WARNING'}, "No mesh objects selected for joining")
+            self.report({'WARNING'}, t('JoinSelectedMeshes.info.warning'))
             
