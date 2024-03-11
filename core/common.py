@@ -141,14 +141,3 @@ def remove_doubles(mesh_obj: Object, threshold: float, save_shapes: bool = True)
     bm.to_mesh(mesh)
 
     return pre_polygons - len(mesh.polygons)
-
-def make_annotations(cls):
-    bl_props = {k: v for k, v in cls.__dict__.items() if isinstance(v, bpy.props._PropertyDeferred)}
-    if bl_props:
-        if '__annotations__' not in cls.__dict__:
-            setattr(cls, '__annotations__', {})
-        annotations = cls.__dict__['__annotations__']
-        for k, v in bl_props.items():
-            annotations[k] = v
-            delattr(cls, k)
-    return cls
