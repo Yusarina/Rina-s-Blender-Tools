@@ -145,9 +145,11 @@ def register():
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=False)
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
-    bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
+    bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=False)
     bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
     bpy.types.Scene.keep_merged_bones = bpy.props.BoolProperty(name="Keep Merged Bones", default=False)
+    bpy.types.Scene.show_mesh_options = bpy.props.BoolProperty(name="Show Mesh Options", default=False)
+    bpy.types.Scene.show_bones_options = bpy.props.BoolProperty(name="Show Bone Options", default=False)
 
     for cls in classes:
             addon_updater_ops.make_annotations(cls)
@@ -191,6 +193,8 @@ def unregister():
     del bpy.types.Scene.plugin_language
     del bpy.types.Scene.rinas_plugin
     del bpy.types.Scene.keep_merged_bones
+    del bpy.types.Scene.show_mesh_options
+    del bpy.types.Scene.show_bones_options
     bpy.utils.unregister_class(ui.optimization.RinasPluginProps)
     core.translations.load_translations()
     addon_updater_ops.unregister()    

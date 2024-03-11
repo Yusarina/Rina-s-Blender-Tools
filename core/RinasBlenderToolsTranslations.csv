@@ -16,6 +16,8 @@ RinasBlenderToolsPanel.Optimization,Optimization,最適化,최적화,Optimisatio
 RinasBlenderToolsPanel.OtherOptions,Other Options,その他のオプション,기타 옵션,Autres options,Otras opciones
 RinasBlenderToolsPanel.Credits,Credits,クレジット,크레딧,Crédits,Créditos
 RinasBlenderToolsPanel.Settings,Settings,設定,설정,Paramètres,Configuraciones
+RinasBlenderToolsPanel.BoneOptions,Bones Options,ボーンオプション,뼈 옵션,Options de os,Opciones de hueso
+RinasBlenderToolsPanel.MeshOptions,Mesh Options,メッシュオプション,메쉬 옵션,Options de maillage,Opciones de malla
 OtherOptions.SeperateOptions,"Separate Meshes Options:","メッシュオプションを分離:","메쉬 옵션을 분리:","Options de séparation des maillages:","Opciones de separación de mallas:"
 SettingsSubMenu.label,Settings,設定,설정,Paramètres,Configuraciones
 SettingsSubMenu.LanguageLabel,"Language:","言語:","언어:","Langue:","Idioma:"
@@ -31,6 +33,7 @@ OptimizationSubMenu.label,Optimization,最適化,최적화,Optimisation,Optimiza
 OptimizationSubMenu.BoneOptions,"Bone Options:","ボーンオプション:","ボーン 옵션:","Options de Bone:","Opciones de hues:"
 OptimizationSubMenu.BoneOptionsDelete,Delete,削除,삭제,Supprimer,Eliminar
 OptimizationSubMenu.MeshOptions,"Mesh Options:","メッシュオプション:","메시 옵션:","Options de maillage:","Opciones de malla:"
+OptimizationSubMenu.MergeBonesWieghts,Merge Bones Weights:,ボーンウェイトをマージ:,뼈대 가중치 병합:,Fusionner les poids des os:,Fusionar pesos de huesos:
 QuickAccessSubMenu.label,Quick Access,クイックアクセス,빠른 액세스,Accès rapide,Acceso rápido
 SeparateByMaterials.label,Separate By Material,マテリアルごとに分離,메테리얼별로 분리,Séparer par matériaux,Separar por materiales
 SeparateByMaterials.description,Separates all meshes by their material,すべてのメッシュをマテリアルごとに分離,모든 메시를 메테리얼별로 분리,Séparez tous les maillages par leur matériau,Separar todas las mallas por su material
