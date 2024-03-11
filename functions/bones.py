@@ -1,6 +1,6 @@
 import bpy
 import re
-from core.common import get_objects, get_meshes, get_armature, unselect_all
+from core.common import get_objects, get_meshes, get_armature, unselect_all, select
 from core.translations import t
 from bpy.props import EnumProperty
 
@@ -188,3 +188,98 @@ class RemoveConstraints(bpy.types.Operator):
             self.report({'INFO'}, t('RemoveConstraints.info.no_constraints'))
             
         return result
+
+class MergeBoneWeightsToParent(bpy.types.Operator):
+    bl_idname = "rinasplugin.merge_bone_weights_to_parent"
+    bl_label = "Merge Bone Weights to Parent"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return context.mode == 'EDIT_ARMATURE' and context.selected_editable_bones
+
+    def execute(self, context):
+        armature = context.active_object
+        keep_merged_bones = context.scene.keep_merged_bones
+
+        # Find which bones to work on and put their name and their parent in a list
+        parent_list = {}
+        for bone in context.selected_editable_bones:
+            parent = bone.parent
+            if parent:
+                parent_list[bone.name] = parent.name
+
+        # Merge all the bones in the parenting list
+        merge_weights(armature, parent_list, keep_merged_bones)
+
+        self.report({'INFO'}, f"Merged weights of {len(parent_list)} bones to their parents.")
+        return {'FINISHED'}
+
+class MergeBoneWeightsToActive(bpy.types.Operator):
+    bl_idname = "rinasplugin.merge_bone_weights_to_active"
+    bl_label = "Merge Bone Weights to Active"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return context.mode == 'EDIT_ARMATURE' and context.selected_editable_bones and len(context.selected_editable_bones) > 1 and context.active_bone in context.selected_editable_bones
+
+    def execute(self, context):
+        armature = context.active_object
+        keep_merged_bones = context.scene.keep_merged_bones
+
+        # Find which bones to work on and put their name and the active bone's name in a list
+        parent_list = {}
+        for bone in context.selected_editable_bones:
+            if bone != context.active_bone:
+                parent_list[bone.name] = context.active_bone.name
+
+        # Merge all the bones in the parenting list
+        merge_weights(armature, parent_list, keep_merged_bones)
+
+        self.report({'INFO'}, f"Merged weights of {len(parent_list)} bones to the active bone.")
+        return {'FINISHED'}
+
+def merge_weights(armature, parent_list, keep_merged_bones):
+    bpy.ops.object.mode_set(mode='OBJECT')
+    # Merge the weights on the meshes
+    for mesh in get_meshes(armature):
+        select(mesh)
+
+        for bone, parent in parent_list.items():
+            if not mesh.vertex_groups.get(bone):
+                continue
+            if not mesh.vertex_groups.get(parent):
+                mesh.vertex_groups.new(name=parent)
+            mix_weights(mesh, bone, parent)
+
+    # Select armature
+    unselect_all()
+    select(armature)
+    bpy.ops.object.mode_set(mode='EDIT')
+
+    # Delete merged bones if not keeping them
+    if not keep_merged_bones:
+        for bone in parent_list.keys():
+            armature.data.edit_bones.remove(armature.data.edit_bones.get(bone))
+
+# The Below is from Cat's Blender Plugin, please note that it is under the GPL license. Used it has my version just didn't work, full credit to them!
+
+def mix_weights(mesh, vg_from, vg_to, mix_strength=1.0, mix_mode='ADD', delete_old_vg=True):
+    mesh.active_shape_key_index = 0
+    mod = mesh.modifiers.new("VertexWeightMix", 'VERTEX_WEIGHT_MIX')
+    mod.vertex_group_a = vg_to
+    mod.vertex_group_b = vg_from
+    mod.mix_mode = mix_mode
+    mod.mix_set = 'B'
+    mod.mask_constant = mix_strength
+    apply_modifier(mod)
+    if delete_old_vg:
+        mesh.vertex_groups.remove(mesh.vertex_groups.get(vg_from))
+    mesh.active_shape_key_index = 0  # This line fixes a visual bug in 2.80 which causes random weights to be stuck after being merged
+
+def apply_modifier(mod, as_shapekey=False):
+    if as_shapekey:
+        bpy.ops.object.modifier_apply_as_shapekey(keep_modifier=False, modifier=mod.name)
+    else:
+        bpy.ops.object.modifier_apply(modifier=mod.name)

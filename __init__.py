@@ -129,6 +129,8 @@ def register():
     bpy.utils.register_class(functions.bones.MergeBones)
     bpy.utils.register_class(functions.bones.RemoveZeroWeightBones)
     bpy.utils.register_class(functions.bones.RemoveConstraints)
+    bpy.utils.register_class(functions.bones.MergeBoneWeightsToParent)
+    bpy.utils.register_class(functions.bones.MergeBoneWeightsToActive)
     bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
@@ -144,7 +146,8 @@ def register():
     bpy.types.Scene.show_optimization = bpy.props.BoolProperty(name="Show Optimization", default=False)
     bpy.types.Scene.show_settings = bpy.props.BoolProperty(name="Show Settings", default=True)
     bpy.types.Scene.show_credits = bpy.props.BoolProperty(name="Show Credits", default=False)
-    
+    bpy.types.Scene.keep_merged_bones = bpy.props.BoolProperty(name="Keep Merged Bones", default=False)
+
     for cls in classes:
             addon_updater_ops.make_annotations(cls)
     
@@ -167,6 +170,8 @@ def unregister():
     bpy.utils.unregister_class(functions.bones.MergeBones)
     bpy.utils.unregister_class(functions.bones.RemoveZeroWeightBones)
     bpy.utils.unregister_class(functions.bones.RemoveConstraints)
+    bpy.utils.unregister_class(functions.bones.MergeBoneWeightsToParent)
+    bpy.utils.unregister_class(functions.bones.MergeBoneWeightsToActive)
     bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
     bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
     bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)
@@ -183,6 +188,7 @@ def unregister():
     del bpy.types.Scene.show_settings
     del bpy.types.Scene.plugin_language
     del bpy.types.Scene.rinas_plugin
+    del bpy.types.Scene.keep_merged_bones
     bpy.utils.unregister_class(ui.optimization.RinasPluginProps)
     core.translations.load_translations()
     addon_updater_ops.unregister()    
