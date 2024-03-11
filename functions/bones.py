@@ -257,7 +257,8 @@ class RemoveConstraints(bpy.types.Operator):
 
 class MergeBoneWeightsToParent(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bone_weights_to_parent"
-    bl_label = "Merge Bone Weights to Parent"
+    bl_label = t("MergeBoneWeightsToParent.label")
+    bl_description = t("MergeBoneWeightsToParent.description")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -278,12 +279,13 @@ class MergeBoneWeightsToParent(bpy.types.Operator):
         # Merge all the bones in the parenting list
         merge_weights(armature, parent_list, keep_merged_bones)
 
-        self.report({'INFO'}, f"Merged weights of {len(parent_list)} bones to their parents.")
+        self.report({'INFO'}, t('MergeBoneWeightsToParent.info.merged_boneswieghts').format(count=parent_list))
         return {'FINISHED'}
 
 class MergeBoneWeightsToActive(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bone_weights_to_active"
-    bl_label = "Merge Bone Weights to Active"
+    bl_label = t("MergeBoneWeightsToActive.label")
+    bl_description = t("MergeBoneWeightsToActive.description")
     bl_options = {'REGISTER', 'UNDO'}
 
     @classmethod
@@ -303,19 +305,19 @@ class MergeBoneWeightsToActive(bpy.types.Operator):
         # Merge all the bones in the parenting list
         merge_weights(armature, parent_list, keep_merged_bones)
 
-        self.report({'INFO'}, f"Merged weights of {len(parent_list)} bones to the active bone.")
+        self.report({'INFO'}, t('MergeBoneWeightsToActive.info.merged_boneswieghts').format(count=parent_list))
         return {'FINISHED'}
 
 class ConnectBonesToChildren(bpy.types.Operator):
     bl_idname = "rinasplugin.connect_bones_to_children"
-    bl_label = "Connect Bones to Children"
-    bl_description = "Connect all bones to their respective children"
+    bl_label = t("ConnectBonesToChildren.label")
+    bl_description = t("ConnectBonesToChildren.description")
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
         armature = get_armature(context)
         if connect_bones_to_children(armature):
-            self.report({'INFO'}, "Connected bones to their children")
+            self.report({'INFO'}, t('ConnectBonesToChildren.info.success'))
         else:
-            self.report({'WARNING'}, "No armature found in the scene")
+            self.report({'WARNING'}, t('ConnectBonesToChildren.warning.noarmature'))
         return {'FINISHED'}
