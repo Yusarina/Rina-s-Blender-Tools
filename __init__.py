@@ -18,8 +18,8 @@ import os
 import importlib
 
 # Check if Blender version is supported
-if bpy.app.version < (4, 0, 0):
-    raise Exception("This addon requires Blender 4.0 or newer, 3.6 is not supported at all.")
+if bpy.app.version < (4, 0, 0) or bpy.app.version > (4, 0, 99):
+    raise Exception("This addon requires Blender 4.0. Versions below 4.0 and above 4.0 are not supported.")
 
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
