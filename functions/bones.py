@@ -283,3 +283,39 @@ def apply_modifier(mod, as_shapekey=False):
         bpy.ops.object.modifier_apply_as_shapekey(keep_modifier=False, modifier=mod.name)
     else:
         bpy.ops.object.modifier_apply(modifier=mod.name)
+
+# End of code from Cats Blender Plugin
+
+def connect_bones_to_children(armature):
+    if armature and armature.type == 'ARMATURE':
+        bpy.ops.object.mode_set(mode='EDIT')
+        for bone in armature.data.edit_bones:
+            if bone.parent:
+                # Store the original head and tail positions
+                original_head = bone.head.copy()
+                original_tail = bone.tail.copy()
+
+                # Connect the bone to its parent
+                bone.use_connect = True
+
+                # Restore the original head and tail positions
+                bone.head = original_head
+                bone.tail = original_tail
+
+        bpy.ops.object.mode_set(mode='OBJECT')
+        return True
+    return False
+
+class ConnectBonesToChildren(bpy.types.Operator):
+    bl_idname = "rinasplugin.connect_bones_to_children"
+    bl_label = "Connect Bones to Children"
+    bl_description = "Connect all bones to their respective children"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        armature = get_armature(context)
+        if connect_bones_to_children(armature):
+            self.report({'INFO'}, "Connected bones to their children")
+        else:
+            self.report({'WARNING'}, "No armature found in the scene")
+        return {'FINISHED'}

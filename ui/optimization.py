@@ -104,3 +104,9 @@ class OptimizationSubMenu(bpy.types.Menu):
         row.operator("rinasplugin.merge_bone_weights_to_parent")
         row.operator("rinasplugin.merge_bone_weights_to_active")
         col.separator()
+        col = box.column(align=True)
+        split = col.row(align=True)
+        row = split.row(align=True)
+        sub = col.column(align=True)
+        row.scale_y = 1.1
+        row.operator("rinasplugin.connect_bones_to_children")
