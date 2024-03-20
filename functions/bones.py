@@ -3,6 +3,7 @@ import re
 from core.common import get_objects, get_meshes, get_armature, unselect_all, select
 from core.translations import t
 from bpy.props import EnumProperty
+from core.registry import register
 
 exclude_bones = ['Hips', 'Chest', 'Thumb', 'Head', 'Neck', 'Spine', 'Twist', 'Eye', 'Tongue', 'Finger', 'Shoulder', 'Arm', 'Elbow', 'Wrist', 'Leg', 'Knee', 'Ankle', 'Toe', 'Teeth', 'Hand', 'BreastUpper2']
 
@@ -154,6 +155,7 @@ def merge_weights(armature, parent_list, keep_merged_bones):
         for bone in parent_list.keys():
             armature.data.edit_bones.remove(armature.data.edit_bones.get(bone))
 
+@register
 class MergeBones(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bones_main"
     bl_label = t("MergeBones.label")
@@ -222,6 +224,7 @@ class MergeBones(bpy.types.Operator):
 
         return {'FINISHED'}
 
+@register
 class RemoveZeroWeightBones(bpy.types.Operator):
     bl_idname = "rinasplugin.remove_zero_weight_bones"
     bl_label = t("RemoveZeroWeightBones.label")
@@ -239,6 +242,7 @@ class RemoveZeroWeightBones(bpy.types.Operator):
                 
         return {'FINISHED'}
 
+@register
 class RemoveConstraints(bpy.types.Operator):
     bl_idname = "rinasplugin.remove_constraints"
     bl_label = t("RemoveConstraints.label")
@@ -255,6 +259,7 @@ class RemoveConstraints(bpy.types.Operator):
             
         return result
 
+@register
 class MergeBoneWeightsToParent(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bone_weights_to_parent"
     bl_label = t("MergeBoneWeightsToParent.label")
@@ -282,6 +287,7 @@ class MergeBoneWeightsToParent(bpy.types.Operator):
         self.report({'INFO'}, t('MergeBoneWeightsToParent.info.merged_boneswieghts').format(count=parent_list))
         return {'FINISHED'}
 
+@register
 class MergeBoneWeightsToActive(bpy.types.Operator):
     bl_idname = "rinasplugin.merge_bone_weights_to_active"
     bl_label = t("MergeBoneWeightsToActive.label")
@@ -308,6 +314,7 @@ class MergeBoneWeightsToActive(bpy.types.Operator):
         self.report({'INFO'}, t('MergeBoneWeightsToActive.info.merged_boneswieghts').format(count=parent_list))
         return {'FINISHED'}
 
+@register
 class ConnectBonesToChildren(bpy.types.Operator):
     bl_idname = "rinasplugin.connect_bones_to_children"
     bl_label = t("ConnectBonesToChildren.label")

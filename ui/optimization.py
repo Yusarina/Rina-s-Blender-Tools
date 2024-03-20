@@ -4,10 +4,15 @@ from core.translations import t
 from core.addonpreferences import AddonPreferences
 from functions.bones import get_bone_items, MergeBones
 from bpy.props import StringProperty, EnumProperty
+from core.registry import register
 
+@register
 class RinasPluginProps(bpy.types.PropertyGroup):
+    bl_idname = "rinasplugin.rinapluginprops"
+    
     merge_base_bone: bpy.props.EnumProperty(items=get_bone_items)
 
+@register
 class OptimizationSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Optimization'
     bl_label = t('OptimizationSubMenu.label')
@@ -31,9 +36,10 @@ class OptimizationSubMenu(bpy.types.Menu):
             # Call the submenu class
             BoneOptionsSubMenu.draw(self, context)
 
+@register
 class MeshOptionsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_MeshOptions'
-    bl_label = t('MeshOptionsSubMenu.label')
+    bl_label = t('RinasBlenderToolsPanel.MeshOptions')
 
     def draw(self, context):
         scene = context.scene
@@ -71,9 +77,10 @@ class MeshOptionsSubMenu(bpy.types.Menu):
         col.separator()
         col.separator()
 
+@register
 class BoneOptionsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_BoneOptions'
-    bl_label = t('BoneOptionsSubMenu.label')
+    bl_label = t('OptimizationSubMenu.BoneOptions')
 
     merge_base_bone: bpy.props.EnumProperty()
 

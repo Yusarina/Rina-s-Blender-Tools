@@ -2,7 +2,9 @@ import bpy
 import os
 from core.translations import t
 from addon_updater_ops import AddonUpdaterCheckNow, AddonUpdaterInstallManually, updater, AddonUpdaterEndBackground, AddonUpdaterUpdateNow, AddonUpdaterUpdateTarget, AddonUpdaterRestoreBackup
+from core.registry import register
 
+@register
 class SettingsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Settings'
     bl_label = "SettingsSubMenu.label"

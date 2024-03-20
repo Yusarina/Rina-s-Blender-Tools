@@ -2,6 +2,7 @@ import bpy
 import re
 from core.common import get_armature, get_meshes, clean_material_names  
 from core.translations import t
+from core.registry import register
 
 def textures_match(tex1, tex2):
     return tex1.image == tex2.image and tex1.extension == tex2.extension
@@ -59,6 +60,7 @@ def get_base_name(name):
 def report_consolidated(self, num_combined):
     self.report({'INFO'}, t('CombineMaterials.info.combine_materials').format(count=num_combined))
 
+@register
 class CombineMaterials(bpy.types.Operator):
     bl_idname = "rinasplugin.combine_materials"
     bl_label = t("CombineMaterials.label")

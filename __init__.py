@@ -2,8 +2,8 @@ bl_info = {
     "name": "Rina's Blender Tools",
     "author": "Yusarina",
     "description": "A collection of tools to help make models easier to work with in VRChat or other Games.",
-    "version": (4, 0, 1, 2),
-    "blender": (4, 0, 0),
+    "version": (4, 1, 0, 0),
+    "blender": (4, 1, 0),
     "location": "View3D > Sidebar",
     "description": "An set of tools to help shorten steps needed to optimize models into VRChat or other Games. Currently only does a few things but I planning to build even more features into these tools.",
 	"warning": "",
@@ -18,8 +18,8 @@ import os
 import importlib
 
 # Check if Blender version is supported
-if bpy.app.version < (4, 0, 0) or bpy.app.version > (4, 0, 99):
-    raise Exception("This addon requires Blender 4.0. Versions below 4.0 and above 4.0 are not supported.")
+if bpy.app.version < (4, 1, 0) or bpy.app.version > (4, 1, 99):
+    raise Exception("This addon requires Blender 4.1. Versions below 4.1 and above 4.1 are not supported.")
 
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
@@ -28,6 +28,7 @@ from bpy.props import EnumProperty
 from . import addon_updater_ops
 from ui.settings import SettingsSubMenu
 from addon_updater_ops import updater
+from core.registry import registered_classes
 
 import core.addonpreferences
 import core.translations
@@ -115,32 +116,10 @@ classes = (
 
 def register():
     core.translations.load_translations()
-    bpy.utils.register_class(core.addonpreferences.AddonPreferences)
     addon_updater_ops.register(bl_info)
-    bpy.utils.register_class(UpdaterPreferences)
     bpy.app.handlers.save_post.append(lambda dummy: core.addonpreferences.addon_prefs.save_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
     bpy.app.handlers.load_post.append(lambda dummy: core.addonpreferences.addon_prefs.load_preferences(core.addonpreferences.addon_prefs.addon_prefs_filepath))
-    bpy.utils.register_class(functions.otheroptimizations.RemoveDoubles)
-    bpy.utils.register_class(functions.combine_materials.CombineMaterials)
-    bpy.utils.register_class(functions.join_meshes.JoinAllMeshes)
-    bpy.utils.register_class(functions.join_meshes.JoinSelectedMeshes)
-    bpy.utils.register_class(functions.separate_meshes.SeparateByMaterials)
-    bpy.utils.register_class(functions.separate_meshes.SeparateLooseParts)
-    bpy.utils.register_class(functions.bones.MergeBones)
-    bpy.utils.register_class(functions.bones.RemoveZeroWeightBones)
-    bpy.utils.register_class(functions.bones.RemoveConstraints)
-    bpy.utils.register_class(functions.bones.MergeBoneWeightsToParent)
-    bpy.utils.register_class(functions.bones.MergeBoneWeightsToActive)
-    bpy.utils.register_class(functions.bones.ConnectBonesToChildren)
-    bpy.utils.register_class(ui.main.RinasBlenderToolsPanel)
-    bpy.utils.register_class(ui.quick_access.QuickAccessSubMenu)
-    bpy.utils.register_class(ui.optimization.OptimizationSubMenu)
-    bpy.utils.register_class(ui.otheroptions.OtherOptionsSubMenu)
-    bpy.utils.register_class(ui.settings.SettingsSubMenu)
-    bpy.utils.register_class(ui.credits.CreditsSubMenu)
-    bpy.utils.register_class(ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_base_bone = bpy.props.StringProperty()
-    bpy.types.Scene.rinas_plugin = bpy.props.PointerProperty(type=ui.optimization.RinasPluginProps)
     bpy.types.Scene.merge_ratio = bpy.props.FloatProperty(min=0.0, max=100.0, default=50.0)
     bpy.types.Scene.show_quick_access = bpy.props.BoolProperty(name="Show Quick Access", default=True)
     bpy.types.Scene.show_other_options = bpy.props.BoolProperty(name="Show Other Options", default=False)
@@ -153,6 +132,10 @@ def register():
 
     for cls in classes:
             addon_updater_ops.make_annotations(cls)
+
+    for cls in registered_classes:
+        print(f"Registering class: {cls.__name__}") 
+        bpy.utils.register_class(cls)
     
     bpy.types.Scene.plugin_language = bpy.props.EnumProperty(
         name="Plugin Language",
@@ -164,26 +147,6 @@ def register():
     updater.check_for_update_now()
     
 def unregister():
-    bpy.utils.unregister_class(functions.otheroptimizations.RemoveDoubles)
-    bpy.utils.unregister_class(functions.combine_materials.CombineMaterials)
-    bpy.utils.unregister_class(functions.join_meshes.JoinAllMeshes)
-    bpy.utils.unregister_class(functions.join_meshes.JoinSelectedMeshes)
-    bpy.utils.unregister_class(functions.separate_meshes.SeparateByMaterials)
-    bpy.utils.unregister_class(functions.separate_meshes.SeparateLooseParts)
-    bpy.utils.unregister_class(functions.bones.MergeBones)
-    bpy.utils.unregister_class(functions.bones.RemoveZeroWeightBones)
-    bpy.utils.unregister_class(functions.bones.RemoveConstraints)
-    bpy.utils.unregister_class(functions.bones.MergeBoneWeightsToParent)
-    bpy.utils.unregister_class(functions.bones.MergeBoneWeightsToActive)
-    bpy.utils.unregister_class(functions.bones.ConnectBonesToChildren)
-    bpy.utils.unregister_class(ui.main.RinasBlenderToolsPanel)
-    bpy.utils.unregister_class(ui.quick_access.QuickAccessSubMenu)
-    bpy.utils.unregister_class(ui.optimization.OptimizationSubMenu)
-    bpy.utils.unregister_class(ui.otheroptions.OtherOptionsSubMenu)
-    bpy.utils.unregister_class(ui.credits.CreditsSubMenu)
-    bpy.utils.unregister_class(ui.settings.SettingsSubMenu)
-    bpy.utils.unregister_class(core.addonpreferences.AddonPreferences)
-    bpy.utils.unregister_class(UpdaterPreferences)
     del bpy.types.Scene.merge_base_bone
     del bpy.types.Scene.merge_ratio
     del bpy.types.Scene.show_credits
@@ -191,13 +154,14 @@ def unregister():
     del bpy.types.Scene.show_quick_access
     del bpy.types.Scene.show_settings
     del bpy.types.Scene.plugin_language
-    del bpy.types.Scene.rinas_plugin
     del bpy.types.Scene.keep_merged_bones
     del bpy.types.Scene.show_mesh_options
     del bpy.types.Scene.show_bones_options
-    bpy.utils.unregister_class(ui.optimization.RinasPluginProps)
     core.translations.load_translations()
-    addon_updater_ops.unregister()    
+    addon_updater_ops.unregister()   
+
+    for cls in reversed(registered_classes):
+        bpy.utils.unregister_class(cls) 
 
     # Check if the load_post handler is in the list before removing it
     load_post_handler = core.addonpreferences.AddonPreferences.load_preferences

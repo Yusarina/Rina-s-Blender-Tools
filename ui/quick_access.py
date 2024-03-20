@@ -1,6 +1,8 @@
 import bpy
 from core.translations import t
+from core.registry import register
 
+@register
 class QuickAccessSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_QuickAccess'
     bl_label = t('QuickAccessSubMenu.label')

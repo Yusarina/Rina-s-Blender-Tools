@@ -1,6 +1,8 @@
 import bpy
 from core.translations import t
+from core.registry import register
 
+@register
 class CreditsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_Credits'
     bl_label = t('CreditsSubMenu.label')

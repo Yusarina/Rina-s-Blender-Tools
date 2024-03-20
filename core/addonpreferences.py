@@ -1,7 +1,9 @@
 import bpy
 import json
 import os
+from core.registry import register
 
+@register
 class AddonPreferences(bpy.types.AddonPreferences):
     bl_idname = __package__
 

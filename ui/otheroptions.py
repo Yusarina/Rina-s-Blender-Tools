@@ -1,6 +1,8 @@
 import bpy
 from core.translations import t
+from core.registry import register
 
+@register
 class OtherOptionsSubMenu(bpy.types.Menu):
     bl_idname = 'VIEW3D_MT_RINA_OtherOptions'
     bl_label = t('RinasBlenderToolsPanel.OtherOptions')

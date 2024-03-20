@@ -1,7 +1,9 @@
 import bpy 
 from core.translations import t
 from core.common import remove_doubles
+from core.registry import register
 
+@register
 class RemoveDoubles(bpy.types.Operator):
     bl_idname = "rinasplugin.remove_doubles"
     bl_label = t("RemoveDoubles.label")

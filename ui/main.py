@@ -6,7 +6,9 @@ from ui.otheroptions import OtherOptionsSubMenu
 from ui.credits import CreditsSubMenu
 from ui.settings import SettingsSubMenu
 from core.translations import t
+from core.registry import register
 
+@register
 class RinasBlenderToolsPanel(bpy.types.Panel):
     bl_label = t('RinasBlenderToolsPanel.label')
     bl_idname = '3D_VIEW_PT_RinasPluginPanel'

@@ -2,7 +2,9 @@ import bpy
 from core.common import fix_uv_coordinates
 from core.translations import t
 from core.common import get_armature, get_meshes, unselect_all
+from core.registry import register
 
+@register
 class JoinAllMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_all_meshes"    
     bl_label = t("JoinAllMeshes.label")
@@ -61,6 +63,7 @@ class JoinAllMeshes(bpy.types.Operator):
             # Report message if no mesh objects are selected
             self.report({'WARNING'}, t('JoinAllMeshes.info.warning'))
 
+@register
 class JoinSelectedMeshes(bpy.types.Operator):
     bl_idname = "rinasplugin.join_selected_meshes"
     bl_label = t("JoinSelectedMeshes.label")
